@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="IT and AI consulting for small businesses without an IT department. Get the right tools in place and focus on what you do best.">
+  <meta name="theme-color" content="#1C222D">
+  <title>BrilliantR — AI and IT Consulting</title>
+  <link rel="icon" href="images/icon.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #E8EEF4;
+      --accent: #4A9FC4;
+      --bg: #242B38;
+      --text: #C8D0DA;
+      --border: #3A4454;
+      --white: #1C222D;
+      --card: #2A3342;
+      --muted: #8B95A5;
+      --nav-height: 64px;
+      --max-width: 1120px;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    color-scheme: dark;
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-height);
+    }
+
+    body {
+      font-family: Inter, sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* ——— Nav ——— */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-height);
+      background: var(--white);
+      border-bottom: 1px solid transparent;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .site-header.is-scrolled {
+      box-shadow: var(--shadow);
+      border-bottom-color: var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--nav-height);
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .logo img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      filter: invert(1);
+    }
+
+    .logo:hover {
+      text-decoration: none;
+      color: var(--accent);
+    }
+
+    .logo:hover img {
+      opacity: 0.85;
+    }
+
+    .nav-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      padding: 10px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background: var(--primary);
+      border-radius: 1px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .nav-toggle:hover span {
+      background: var(--accent);
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .nav-links {
+      display: none;
+      list-style: none;
+      gap: 0.25rem;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: var(--primary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-links.is-open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: var(--nav-height);
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 0.5rem 0;
+    }
+
+    /* ——— Buttons ——— */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.5rem;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.2;
+      border-radius: 6px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn:hover {
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0F1419;
+    }
+
+    .btn-primary:hover {
+      background: #6BB4D4;
+      color: #0F1419;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-linkedin {
+      background: #0A66C2;
+      color: #FFFFFF;
+      padding: 0.7rem 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .btn-linkedin:hover {
+      background: #1A7FD4;
+      color: #FFFFFF;
+    }
+
+    /* ——— Sections ——— */
+    section {
+      padding: 4rem 0;
+    }
+
+    .section-alt {
+      background: var(--bg);
+    }
+
+    h1, h2, h3 {
+      color: var(--primary);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: clamp(1.85rem, 5vw, 2.75rem);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      max-width: 18ch;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      max-width: 28ch;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+      color: var(--text);
+      max-width: 42rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .fade-in.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .fade-in {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    /* ——— Hero ——— */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 4.5rem 0 5rem;
+      background:
+        radial-gradient(ellipse 70% 80% at 75% 45%, rgba(74, 159, 196, 0.14) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 60% at 20% 80%, rgba(74, 159, 196, 0.06) 0%, transparent 50%),
+        var(--bg);
+      min-height: calc(85vh - var(--nav-height));
+      display: flex;
+      align-items: center;
+    }
+
+    /* Base readability gradient — sits under the mesh */
+    .hero-veil {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          105deg,
+          rgba(36, 43, 56, 0.92) 0%,
+          rgba(36, 43, 56, 0.55) 42%,
+          rgba(36, 43, 56, 0.12) 68%,
+          rgba(36, 43, 56, 0) 100%
+        );
+    }
+
+    /* Mesh above the veil so interaction is visible */
+    .hero-mesh {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      display: block;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      /* Soft scrim so type stays sharp over bright mesh */
+      max-width: 40rem;
+    }
+
+    .hero-content h1,
+    .hero-content .lead {
+      text-shadow: 0 1px 18px rgba(28, 34, 45, 0.85), 0 0 40px rgba(28, 34, 45, 0.5);
+    }
+
+    .hero .lead {
+      font-size: 1.15rem;
+      max-width: 38rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    .hero-link {
+      font-weight: 500;
+      color: var(--primary);
+      padding: 0.5rem 0;
+    }
+
+    .hero-link:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 719px) {
+      .hero-veil {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(36, 43, 56, 0.75) 0%,
+            rgba(36, 43, 56, 0.45) 55%,
+            rgba(36, 43, 56, 0.25) 100%
+          );
+      }
+    }
+
+    /* ——— Problem grid ——— */
+    .problem-grid {
+      display: grid;
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: rgba(74, 159, 196, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .icon-wrap svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .problem-item p {
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    /* ——— Services ——— */
+    .services-grid {
+      display: grid;
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+
+    .service-card .icon-wrap {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      margin-bottom: 0.85rem;
+    }
+
+    .service-card .icon-wrap svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    /* ——— Timeline ——— */
+    .timeline {
+      display: grid;
+      gap: 1.75rem;
+      margin-top: 2.5rem;
+      counter-reset: step;
+    }
+
+    .timeline-step {
+      position: relative;
+      padding-left: 3.5rem;
+    }
+
+    .timeline-step::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #0F1419;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .timeline-step p {
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .how-note {
+      margin-top: 2.5rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--bg);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    /* ——— About ——— */
+    .about-layout {
+      display: grid;
+      gap: 2.5rem;
+      margin-top: 2rem;
+      align-items: start;
+    }
+
+    .about-photo {
+      max-width: 320px;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      aspect-ratio: 4 / 5;
+      background: var(--card);
+    }
+
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .about-text p {
+      margin-bottom: 1.15rem;
+    }
+
+    .about-text .btn {
+      margin-top: 0.5rem;
+    }
+
+    /* ——— Pricing ——— */
+    .pricing-grid {
+      display: grid;
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .price-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .price-card.featured {
+      border-color: var(--accent);
+      border-width: 2px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .price-badge {
+      position: absolute;
+      top: -0.7rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #0F1419;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .price-amount {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 0.5rem 0 0.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .price-amount span {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .price-card ul {
+      list-style: none;
+      margin-top: 1.25rem;
+      flex: 1;
+    }
+
+    .price-card li {
+      padding: 0.55rem 0;
+      border-top: 1px solid var(--border);
+      font-size: 0.95rem;
+      color: var(--text);
+      padding-left: 1.35rem;
+      position: relative;
+    }
+
+    .price-card li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 1.05rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .pricing-bands {
+      margin-top: 2.5rem;
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .pricing-band {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+
+    .pricing-band h3 {
+      margin-bottom: 0.65rem;
+    }
+
+    .pricing-band p {
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .payment-note {
+      margin-top: 1.75rem;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    /* ——— Contact ——— */
+    .contact-form {
+      margin-top: 2rem;
+      max-width: 32rem;
+      display: grid;
+      gap: 1.15rem;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-field label {
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--primary);
+    }
+
+    .form-field input,
+    .form-field textarea {
+      font-family: inherit;
+      font-size: 1rem;
+      padding: 0.75rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--card);
+      color: var(--primary);
+      width: 100%;
+    }
+
+    .form-field input::placeholder,
+    .form-field textarea::placeholder {
+      color: var(--muted);
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: var(--accent);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(74, 159, 196, 0.25);
+    }
+
+    .form-field textarea {
+      resize: vertical;
+      min-height: 6.5rem;
+    }
+
+    .form-note {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .form-status {
+      display: none;
+      margin-top: 1.25rem;
+      max-width: 32rem;
+      padding: 1rem 1.15rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .form-status.is-visible {
+      display: block;
+    }
+
+    .form-status a {
+      font-weight: 500;
+    }
+
+    /* ——— Footer ——— */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 0;
+      background: var(--white);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .footer-brand img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      filter: invert(1);
+    }
+
+    .footer-meta {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* ——— Breakpoints ——— */
+    @media (min-width: 768px) {
+      .nav-toggle {
+        display: none;
+      }
+
+      .nav-links {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.15rem;
+      }
+
+      .nav-links a {
+        padding: 0.5rem 0.85rem;
+      }
+
+      .problem-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .timeline {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+      }
+
+      .timeline-step {
+        padding-left: 0;
+        padding-top: 3.25rem;
+      }
+
+      .timeline-step::before {
+        top: 0;
+        left: 0;
+      }
+
+      .about-layout {
+        grid-template-columns: 280px 1fr;
+        gap: 3rem;
+      }
+
+      .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+        align-items: stretch;
+      }
+
+      .price-card.featured {
+        transform: scale(1.02);
+      }
+    }
+
+    @media (min-width: 1280px) {
+      section {
+        padding: 5rem 0;
+      }
+
+      .hero {
+        padding: 6rem 0 6.5rem;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .about-layout {
+        grid-template-columns: 320px 1fr;
+        gap: 4rem;
+      }
+
+      .pricing-bands {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <div class="nav-inner">
+      <a class="logo" href="#top">
+        <img src="images/logo.png" alt="" width="32" height="32">
+        BrilliantR
+      </a>
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="nav-menu">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <canvas class="hero-mesh" id="hero-mesh" aria-hidden="true"></canvas>
+      <div class="hero-veil" aria-hidden="true"></div>
+      <div class="container fade-in hero-content">
+        <h1>Most small businesses know AI is changing everything. Few know where to start.</h1>
+        <p class="lead">BrilliantR helps small and mid-sized businesses adopt AI and optimize their IT systems — without the guesswork, the bloated contracts, or the hourly billing for work that goes nowhere.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Get Started</a>
+          <a class="hero-link" href="#how-it-works">See how it works</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="problem">
+      <div class="container fade-in">
+        <h2>The barrier to entry has collapsed. Most businesses just don't know it yet.</h2>
+        <p class="lead">Capabilities that recently required six-figure software licenses, dedicated engineering teams, or months of implementation are now accessible via custom AI builds, API connections, and no-code platforms.</p>
+        <div class="problem-grid">
+          <div class="problem-item">
+            <div class="icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <h3>Too much manual work</h3>
+            <p>Your team is doing repetitive tasks that software should be handling. Every hour spent on data entry or copy-paste is an hour not spent growing the business.</p>
+          </div>
+          <div class="problem-item">
+            <div class="icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3>Enterprise tools out of reach</h3>
+            <p>BI dashboards, AI customer support, predictive analytics — these used to require a data team. They don't anymore.</p>
+          </div>
+          <div class="problem-item">
+            <div class="icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+            </div>
+            <h3>No IT person to turn to</h3>
+            <p>Most small businesses can't justify a full-time IT hire. But that means tools get chosen ad hoc, security gaps go unnoticed, and nobody's asking whether your current setup is actually the right one.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-alt" id="services">
+      <div class="container fade-in">
+        <h2>What I can help with</h2>
+        <p class="lead">Most small businesses don't have an IT department — and they don't need one. They need a partner who gets the technology, puts the right tools in place, and lets them focus on what they actually do.</p>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 11l3 3L22 4"/>
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+              </svg>
+            </div>
+            <h3>IT and AI Health Check</h3>
+            <p>$1,500 flat. A full audit of your current IT setup, software spend, security posture, and AI opportunities. You get a prioritized report with clear ROI estimates. No fluff, no upsell pressure.</p>
+          </article>
+          <article class="service-card">
+            <div class="icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 3 21 3 21 8"/>
+                <line x1="4" y1="20" x2="21" y2="3"/>
+                <polyline points="21 16 21 21 16 21"/>
+                <line x1="15" y1="15" x2="21" y2="21"/>
+                <line x1="4" y1="4" x2="9" y2="9"/>
+              </svg>
+            </div>
+            <h3>AI Automation Projects</h3>
+            <p>Replace manual workflows, expensive SaaS tools, or repetitive processes with custom AI solutions. Priced on a shared savings model — I only get paid when you save money.</p>
+          </article>
+          <article class="service-card">
+            <div class="icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"/>
+                <line x1="12" y1="20" x2="12" y2="4"/>
+                <line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+            </div>
+            <h3>Business Intelligence</h3>
+            <p>Natural language dashboards and automated reporting. Ask questions of your own data without SQL, without a data team, without expensive BI licenses.</p>
+          </article>
+          <article class="service-card">
+            <div class="icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <h3>Customer Communication Agents</h3>
+            <p>AI agents that handle inbound enquiries, qualify leads, respond to reviews, and manage appointment booking — 24/7, in any language.</p>
+          </article>
+          <article class="service-card">
+            <div class="icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+            </div>
+            <h3>Document and Invoice Automation</h3>
+            <p>Automated extraction, routing, and processing of invoices, contracts, receipts, and forms. Typical time savings: 80–90% reduction in manual processing.</p>
+          </article>
+          <article class="service-card">
+            <div class="icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+            </div>
+            <h3>Security-First AI Builds</h3>
+            <p>Every solution I build is designed with security from the ground up. No shortcuts. No exposed credentials. No leaky integrations.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works">
+      <div class="container fade-in">
+        <h2>A model built around your results, not my hours.</h2>
+        <p class="lead">For AI automation projects, I use a shared savings model. Here's how it works.</p>
+        <div class="timeline">
+          <div class="timeline-step">
+            <h3>We define the saving</h3>
+            <p>We identify a specific, measurable cost — a software subscription, a manual workflow, a service you're paying for — and agree on the annual value in writing before any work starts.</p>
+          </div>
+          <div class="timeline-step">
+            <h3>I quote 50% of that saving</h3>
+            <p>My fee is exactly 50% of the agreed annual saving. If the project saves you $10,000 a year, my fee is $5,000. No surprises.</p>
+          </div>
+          <div class="timeline-step">
+            <h3>You pay upfront, I start building</h3>
+            <p>Payment is made before the project begins. This keeps both parties committed and removes any ambiguity about what success looks like.</p>
+          </div>
+          <div class="timeline-step">
+            <h3>You get a working solution</h3>
+            <p>Deployed on your own cloud infrastructure (Google Cloud or AWS). You own it. You control it. Running costs are paid directly by you — I have no incentive to over-engineer.</p>
+          </div>
+        </div>
+        <p class="how-note">Not every project fits the ROI sharing model. I also offer hourly consulting at $150/hr and a monthly retainer of $1,000/month for 10 hours. New clients get their first 10 hours at $120/hr.</p>
+      </div>
+    </section>
+
+    <section class="section-alt" id="about">
+      <div class="container fade-in">
+        <h2>The person behind it</h2>
+        <div class="about-layout">
+          <div class="about-photo">
+            <img
+              src="images/photo.jpg"
+              alt="Portrait of the founder of BrilliantR"
+              width="800"
+              height="1000"
+              loading="lazy"
+            >
+          </div>
+          <div class="about-text">
+            <p>I've spent over 10 years as a security consultant — a professional hacker, hired to break into companies before the wrong people did. The last 6+ years I've been on the other side, securing organizations from the inside, and I currently serve as Director of Security for an 800-person company.</p>
+            <p>That background shapes how I build things. I know how systems fail, how they get exploited, and what corners not to cut. When I build an AI solution for your business, security and reliability aren't afterthoughts — they're baked in from the start.</p>
+            <p>Outside of security, my passions are financial markets — equities and macro — programming, and building internal tools that actually get used. Not prototypes that impress in a demo and collect dust after — things that earn their place by making a business faster, leaner, or more profitable.</p>
+            <p>Born in Denmark, I've lived in Finland, Los Angeles, and Austin, and now make my home in Utah with my wife and two kids.</p>
+            <a class="btn btn-linkedin" href="https://www.linkedin.com/in/runetk-dk/" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="container fade-in">
+        <h2>Simple, transparent pricing</h2>
+        <div class="pricing-grid">
+          <article class="price-card">
+            <h3>Introductory Rate</h3>
+            <p class="price-amount">$120 <span>/ hr</span></p>
+            <ul>
+              <li>First 10 hours with any new client</li>
+              <li>Pay as you go</li>
+              <li>No minimum commitment</li>
+              <li>Billed in full-hour increments</li>
+            </ul>
+          </article>
+          <article class="price-card featured">
+            <span class="price-badge">Most popular</span>
+            <h3>Monthly Retainer</h3>
+            <p class="price-amount">$1,000 <span>/ month</span></p>
+            <ul>
+              <li>10 hours per month at $100/hr</li>
+              <li>3-month minimum</li>
+              <li>Unused hours roll over one month</li>
+              <li>30-day cancellation notice after term</li>
+            </ul>
+          </article>
+          <article class="price-card">
+            <h3>Standard Hourly</h3>
+            <p class="price-amount">$150 <span>/ hr</span></p>
+            <ul>
+              <li>No commitment required</li>
+              <li>Flexible scope</li>
+              <li>Billed in full-hour increments</li>
+              <li>Invoiced monthly or on completion</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="pricing-bands">
+          <div class="pricing-band">
+            <h3>AI Automation — ROI Sharing</h3>
+            <p>Fee = 50% of agreed annual saving, paid upfront. Minimum project floor: $5,000 in annual savings. Includes full build and deployment on your cloud infrastructure. Post-delivery support billed at standard hourly rates.</p>
+          </div>
+          <div class="pricing-band">
+            <h3>IT and AI Health Check</h3>
+            <p>$1,500 flat fee. Covers kickoff call, full assessment across IT, security, tools, and AI opportunities, written report, and review call. Timeline: 2–3 weeks.</p>
+          </div>
+        </div>
+
+        <p class="payment-note">Payment: ACH bank transfer.</p>
+      </div>
+    </section>
+
+    <section class="section-alt" id="contact">
+      <div class="container fade-in">
+        <h2>Ready to find out what AI can do for your business?</h2>
+        <p class="lead">The easiest way to start is the IT and AI Health Check — a fixed-price assessment with no ongoing commitment. Or just reach out with a question.</p>
+        <form class="contact-form" id="contact-form">
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required autocomplete="name">
+          </div>
+          <div class="form-field">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" autocomplete="organization">
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required autocomplete="email">
+          </div>
+          <div class="form-field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Send Message</button>
+        </form>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        <p class="form-note">Or email directly: <a href="mailto:hello@brilliantr.com">hello@brilliantr.com</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span class="footer-brand">
+        <img src="images/logo.png" alt="" width="24" height="24">
+        BrilliantR
+      </span>
+      <span class="footer-meta">Lehi, Utah · <span id="year"></span></span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var header = document.getElementById("site-header");
+      var toggle = document.getElementById("nav-toggle");
+      var menu = document.getElementById("nav-menu");
+      var yearEl = document.getElementById("year");
+
+      if (yearEl) {
+        yearEl.textContent = String(new Date().getFullYear());
+      }
+
+      function setMenuOpen(open) {
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        menu.classList.toggle("is-open", open);
+      }
+
+      var form = document.getElementById("contact-form");
+      var formStatus = document.getElementById("form-status");
+
+      if (form) {
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          var name = (form.elements.name.value || "").trim();
+          var company = (form.elements.company.value || "").trim();
+          var email = (form.elements.email.value || "").trim();
+          var message = (form.elements.message.value || "").trim();
+
+          if (!name || !email || !message) {
+            return;
+          }
+
+          var subject = "BrilliantR inquiry from " + name;
+          var body =
+            "Name: " + name + "\n" +
+            "Company: " + (company || "—") + "\n" +
+            "Email: " + email + "\n\n" +
+            message;
+
+          var mailto =
+            "mailto:hello@brilliantr.com" +
+            "?subject=" + encodeURIComponent(subject) +
+            "&body=" + encodeURIComponent(body);
+
+          var mailLink = document.createElement("a");
+          mailLink.href = mailto;
+          mailLink.rel = "noopener";
+          document.body.appendChild(mailLink);
+          mailLink.click();
+          document.body.removeChild(mailLink);
+
+          if (formStatus) {
+            formStatus.classList.add("is-visible");
+            formStatus.innerHTML =
+              'If your email app did not open, send your message to ' +
+              '<a href="mailto:hello@brilliantr.com">hello@brilliantr.com</a>.';
+          }
+
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(body).then(
+              function () {
+                if (formStatus) {
+                  formStatus.innerHTML =
+                    'Message copied to your clipboard. Paste it into an email to ' +
+                    '<a href="mailto:hello@brilliantr.com">hello@brilliantr.com</a>.';
+                }
+              },
+              function () { /* clipboard blocked */ }
+            );
+          }
+        });
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener("click", function (event) {
+          var hash = anchor.getAttribute("href");
+          if (!hash || hash === "#") return;
+          var target = document.getElementById(hash.slice(1));
+          if (!target) return;
+
+          event.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          setMenuOpen(false);
+
+          try {
+            history.replaceState(null, "", hash);
+          } catch (err) {
+            /* ignore */
+          }
+        });
+      });
+
+      toggle.addEventListener("click", function () {
+        var open = toggle.getAttribute("aria-expanded") !== "true";
+        setMenuOpen(open);
+      });
+
+      menu.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          setMenuOpen(false);
+        });
+      });
+
+      function onScroll() {
+        header.classList.toggle("is-scrolled", window.scrollY > 8);
+      }
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      if ("IntersectionObserver" in window) {
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { rootMargin: "0px 0px -40px 0px", threshold: 0.08 }
+        );
+
+        document.querySelectorAll(".fade-in").forEach(function (el) {
+          observer.observe(el);
+        });
+      } else {
+        document.querySelectorAll(".fade-in").forEach(function (el) {
+          el.classList.add("is-visible");
+        });
+      }
+
+      /* ——— Interactive diamond mesh (hero) ——— */
+      (function initHeroMesh() {
+        var canvas = document.getElementById("hero-mesh");
+        var hero = document.getElementById("top");
+        if (!canvas || !hero) return;
+
+        var ctx = canvas.getContext("2d", { alpha: true });
+        if (!ctx) return;
+
+        var motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+        var reduceMotion = motionQuery.matches;
+        var dpr = 1;
+        var width = 0;
+        var height = 0;
+        var nodes = [];
+        var edges = [];
+        var diamond = null;
+        var rafId = 0;
+        var running = false;
+        var pointer = { x: 0, y: 0, active: false, tx: 0, ty: 0 };
+        var lastFrame = 0;
+
+        // Gem-cut diamond: flat table top, girdle at cy, pointed pavilion below
+        function inGemDiamond(x, y, cx, cy, halfW, crownH, pavilionH, tableHalfW) {
+          var dy = y - cy;
+          if (dy < -crownH || dy > pavilionH) return false;
+          var dx = Math.abs(x - cx);
+          if (dy <= 0) {
+            // Crown: trapezoid from girdle width → table width
+            return dx <= halfW - (halfW - tableHalfW) * (-dy / crownH);
+          } else {
+            // Pavilion: triangle to a point
+            return dx <= halfW * (1 - dy / pavilionH);
+          }
+        }
+
+        function rebuild() {
+          var rect = hero.getBoundingClientRect();
+          width = Math.max(1, Math.floor(rect.width));
+          height = Math.max(1, Math.floor(rect.height));
+          dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+          canvas.width = Math.floor(width * dpr);
+          canvas.height = Math.floor(height * dpr);
+          canvas.style.width = width + "px";
+          canvas.style.height = height + "px";
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+          var isNarrow = width < 720;
+          var spacing = Math.max(52, Math.min(82, width / 13));
+          var cx = isNarrow ? width * 0.5 : width * 0.78;
+          var cy = height * 0.38;
+          var halfW = Math.min(width * (isNarrow ? 0.44 : 0.30), height * 0.28);
+          var tableHalfW = halfW * 0.55;
+          var crownH = halfW * 0.45;
+          var pavilionH = halfW * 1.05;
+
+          nodes = [];
+          edges = [];
+          diamond = { cx: cx, cy: cy, halfW: halfW, crownH: crownH, pavilionH: pavilionH, tableHalfW: tableHalfW };
+
+          var row = 0;
+          for (var y = -spacing; y <= height + spacing; y += spacing * 0.87) {
+            var xOff = (row % 2) * (spacing * 0.5);
+            for (var x = -spacing + xOff; x <= width + spacing; x += spacing) {
+              var inside = inGemDiamond(x, y, cx, cy, halfW, crownH, pavilionH, tableHalfW);
+              var rim = !inside && inGemDiamond(x, y, cx, cy, halfW*1.06, crownH*1.06, pavilionH*1.06, tableHalfW*1.06);
+
+              if (!inside && !rim) continue;
+
+              var hash = Math.abs(Math.sin(x * 12.9898 + y * 78.233) * 43758.5453);
+              hash = hash - Math.floor(hash);
+
+              if (rim && hash > 0.5) continue;
+
+              var layer = inside ? 1 : 0.35;
+              nodes.push({
+                bx: x,
+                by: y,
+                x: x,
+                y: y,
+                phase: hash * Math.PI * 2,
+                speed: 0.5 + hash * 1.0,
+                amp: (inside ? 13 : 6) * (0.75 + (1 - hash) * 0.5),
+                layer: layer,
+                r: inside ? 1.2 + hash * 0.7 : 0.8 + hash * 0.3
+              });
+            }
+            row += 1;
+          }
+
+          var maxDist = spacing * 1.2;
+          var maxDistSq = maxDist * maxDist;
+          for (var i = 0; i < nodes.length; i++) {
+            for (var j = i + 1; j < nodes.length; j++) {
+              var dx = nodes[i].bx - nodes[j].bx;
+              var dy = nodes[i].by - nodes[j].by;
+              var d2 = dx * dx + dy * dy;
+              if (d2 > maxDistSq || d2 < 1) continue;
+              edges.push({
+                a: i,
+                b: j,
+                strength: (nodes[i].layer + nodes[j].layer) * 0.5
+              });
+            }
+          }
+        }
+
+        function drawDiamondShell(t, intensity) {
+          if (!diamond) return;
+          var d = diamond;
+          var pulse = 0.9 + 0.1 * Math.sin((t || 0) * 0.8);
+
+          // Gem-cut outline: flat table → girdle → pointed pavilion
+          ctx.beginPath();
+          ctx.moveTo(d.cx - d.tableHalfW, d.cy - d.crownH); // table left
+          ctx.lineTo(d.cx + d.tableHalfW, d.cy - d.crownH); // table right
+          ctx.lineTo(d.cx + d.halfW, d.cy);                   // girdle right
+          ctx.lineTo(d.cx, d.cy + d.pavilionH);               // bottom point
+          ctx.lineTo(d.cx - d.halfW, d.cy);                   // girdle left
+          ctx.closePath();
+
+          var fillRadius = Math.max(d.halfW, d.crownH + d.pavilionH) * 0.7;
+          var fill = ctx.createRadialGradient(d.cx, d.cy + d.pavilionH * 0.2, 0, d.cx, d.cy, fillRadius);
+          fill.addColorStop(0, "rgba(74, 159, 196, " + (0.10 * intensity * pulse) + ")");
+          fill.addColorStop(0.65, "rgba(74, 159, 196, " + (0.03 * intensity) + ")");
+          fill.addColorStop(1, "rgba(74, 159, 196, 0)");
+          ctx.fillStyle = fill;
+          ctx.fill();
+
+          ctx.strokeStyle = "rgba(120, 200, 230, " + (0.20 * intensity) + ")";
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+
+        function drawStatic() {
+          ctx.clearRect(0, 0, width, height);
+          drawDiamondShell(0, 1);
+
+          for (var e = 0; e < edges.length; e++) {
+            var edge = edges[e];
+            var na = nodes[edge.a];
+            var nb = nodes[edge.b];
+            var alpha = 0.12 + edge.strength * 0.22;
+            ctx.beginPath();
+            ctx.moveTo(na.x, na.y);
+            ctx.lineTo(nb.x, nb.y);
+            ctx.strokeStyle = "rgba(120, 190, 220, " + alpha + ")";
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+
+          for (var n = 0; n < nodes.length; n++) {
+            var node = nodes[n];
+            var a = 0.25 + node.layer * 0.45;
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2);
+            ctx.fillStyle = "rgba(210, 235, 248, " + a + ")";
+            ctx.fill();
+          }
+        }
+
+        function frame(now) {
+          if (!running) return;
+          rafId = requestAnimationFrame(frame);
+
+          if (now - lastFrame < 16) return;
+          lastFrame = now;
+
+          var t = now * 0.001;
+          var pActive = pointer.active;
+
+          // Smooth pointer follow
+          var ease = pActive ? 0.22 : 0.08;
+          pointer.tx += (pointer.x - pointer.tx) * ease;
+          pointer.ty += (pointer.y - pointer.ty) * ease;
+          var sx = pointer.tx;
+          var sy = pointer.ty;
+
+          var influence = Math.min(width, height) * 0.42;
+          var influenceSq = influence * influence;
+
+          for (var i = 0; i < nodes.length; i++) {
+            var node = nodes[i];
+            var ox = Math.sin(t * node.speed + node.phase) * node.amp;
+            var oy = Math.cos(t * node.speed * 0.85 + node.phase * 1.1) * node.amp;
+
+            if (pActive) {
+              var dx = sx - node.bx;
+              var dy = sy - node.by;
+              var d2 = dx * dx + dy * dy;
+              if (d2 < influenceSq && d2 > 0.5) {
+                var dist = Math.sqrt(d2);
+                var f = 1 - dist / influence;
+                f = f * f;
+                // Strong magnetic pull + swirl so motion is obvious
+                ox += dx * f * 0.42;
+                oy += dy * f * 0.42;
+                ox += -dy * f * 0.12;
+                oy += dx * f * 0.12;
+              }
+            }
+
+            node.x = node.bx + ox;
+            node.y = node.by + oy;
+          }
+
+          ctx.clearRect(0, 0, width, height);
+          drawDiamondShell(t, 1);
+
+          if (pActive) {
+            var glow = ctx.createRadialGradient(sx, sy, 0, sx, sy, influence);
+            glow.addColorStop(0, "rgba(120, 210, 240, 0.10)");
+            glow.addColorStop(0.5, "rgba(74, 159, 196, 0.04)");
+            glow.addColorStop(1, "rgba(74, 159, 196, 0)");
+            ctx.fillStyle = glow;
+            ctx.fillRect(0, 0, width, height);
+          }
+
+          for (var e = 0; e < edges.length; e++) {
+            var edge = edges[e];
+            var na = nodes[edge.a];
+            var nb = nodes[edge.b];
+            var mx = (na.x + nb.x) * 0.5;
+            var my = (na.y + nb.y) * 0.5;
+            var alpha = 0.07 + edge.strength * 0.16;
+
+            if (pActive) {
+              var pdx = sx - mx;
+              var pdy = sy - my;
+              var pd = Math.sqrt(pdx * pdx + pdy * pdy);
+              if (pd < influence) {
+                alpha += (1 - pd / influence) * 0.5;
+              }
+            }
+
+            alpha *= 0.88 + 0.12 * Math.sin(t * 1.4 + edge.a * 0.12);
+            alpha = Math.min(alpha, 0.82);
+
+            ctx.beginPath();
+            ctx.moveTo(na.x, na.y);
+            ctx.lineTo(nb.x, nb.y);
+            ctx.strokeStyle = "rgba(150, 215, 240, " + alpha + ")";
+            ctx.lineWidth = alpha > 0.35 ? 1.0 : 0.7;
+            ctx.stroke();
+          }
+
+          for (var n = 0; n < nodes.length; n++) {
+            var nd = nodes[n];
+            var na2 = 0.22 + nd.layer * 0.38;
+            var radius = nd.r;
+
+            if (pActive) {
+              var ndx = sx - nd.x;
+              var ndy = sy - nd.y;
+              var ndd = Math.sqrt(ndx * ndx + ndy * ndy);
+              if (ndd < influence) {
+                var boost = 1 - ndd / influence;
+                na2 = Math.min(1, na2 + boost * 0.65);
+                radius += boost * 2.0;
+              }
+            }
+
+            ctx.beginPath();
+            ctx.arc(nd.x, nd.y, radius, 0, Math.PI * 2);
+            ctx.fillStyle = "rgba(220, 240, 250, " + na2 + ")";
+            ctx.fill();
+
+            // Hot core near cursor
+            if (pActive && na2 > 0.7) {
+              ctx.beginPath();
+              ctx.arc(nd.x, nd.y, radius * 0.45, 0, Math.PI * 2);
+              ctx.fillStyle = "rgba(255, 255, 255, " + ((na2 - 0.7) * 1.2) + ")";
+              ctx.fill();
+            }
+          }
+        }
+
+        function start() {
+          if (running) return;
+          running = true;
+          lastFrame = 0;
+          rafId = requestAnimationFrame(frame);
+        }
+
+        function stop() {
+          running = false;
+          if (rafId) {
+            cancelAnimationFrame(rafId);
+            rafId = 0;
+          }
+        }
+
+        function setPointerFromEvent(event) {
+          var rect = hero.getBoundingClientRect();
+          var clientX;
+          var clientY;
+
+          if (event.touches && event.touches.length) {
+            clientX = event.touches[0].clientX;
+            clientY = event.touches[0].clientY;
+          } else if (event.changedTouches && event.changedTouches.length) {
+            clientX = event.changedTouches[0].clientX;
+            clientY = event.changedTouches[0].clientY;
+          } else {
+            clientX = event.clientX;
+            clientY = event.clientY;
+          }
+
+          // Track anywhere over the hero box (including empty right side)
+          var over =
+            clientX >= rect.left &&
+            clientX <= rect.right &&
+            clientY >= rect.top &&
+            clientY <= rect.bottom;
+
+          if (over) {
+            pointer.x = clientX - rect.left;
+            pointer.y = clientY - rect.top;
+            pointer.active = true;
+          } else {
+            pointer.active = false;
+          }
+
+        }
+
+        function onVisibility() {
+          if (document.hidden) {
+            stop();
+          } else {
+            start();
+          }
+        }
+
+        function boot() {
+          rebuild();
+          if (diamond) {
+            pointer.x = pointer.tx = diamond.cx;
+            pointer.y = pointer.ty = diamond.cy;
+          }
+          start();
+        }
+
+        boot();
+
+        // Always track pointer — reduce-motion gets static hover glow, animated mode gets full effect
+        window.addEventListener("pointermove", setPointerFromEvent, { passive: true });
+        window.addEventListener("pointerdown", setPointerFromEvent, { passive: true });
+        window.addEventListener("touchstart", setPointerFromEvent, { passive: true });
+        window.addEventListener("touchmove", setPointerFromEvent, { passive: true });
+        window.addEventListener("touchend", function () {
+          pointer.active = false;
+        }, { passive: true });
+
+        document.addEventListener("visibilitychange", onVisibility);
+
+        // If the user toggles OS reduce-motion, reconfigure
+        function onMotionChange(e) {
+          reduceMotion = e.matches;
+          if (reduceMotion) {
+            // Reset nodes to base positions; loop keeps running but skips idle drift
+            for (var i = 0; i < nodes.length; i++) {
+              nodes[i].x = nodes[i].bx;
+              nodes[i].y = nodes[i].by;
+            }
+            pointer.active = false;
+          } else if (!running) {
+            start();
+          }
+        }
+        if (motionQuery.addEventListener) {
+          motionQuery.addEventListener("change", onMotionChange);
+        } else if (motionQuery.addListener) {
+          motionQuery.addListener(onMotionChange);
+        }
+
+        var resizeTimer = 0;
+        function onResize() {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(function () {
+            var wasActive = pointer.active;
+            var px = pointer.x;
+            var py = pointer.y;
+            rebuild();
+            if (wasActive) {
+              pointer.x = Math.min(width, Math.max(0, px));
+              pointer.y = Math.min(height, Math.max(0, py));
+            }
+            if (!running) start();
+          }, 100);
+        }
+
+        window.addEventListener("resize", onResize, { passive: true });
+        if (typeof ResizeObserver !== "undefined") {
+          new ResizeObserver(onResize).observe(hero);
+        }
+      })();
+    })();
+  </script>
+</body>
+</html>
