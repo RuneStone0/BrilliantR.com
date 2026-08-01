@@ -1,0 +1,55 @@
+# BrilliantR
+
+> AI and IT consulting for small and mid-sized businesses without an in-house IT department. No bloated contracts.
+
+BrilliantR helps small businesses adopt AI and optimize their IT systems. Services are designed to be accessible — no enterprise budget required, no full-time IT hire needed. Every solution is built with security from the ground up.
+
+Contact: hello@brilliantr.com
+Location: Lehi, Utah, USA
+Website: https://brilliantr.com
+
+## Services
+
+### IT and AI Health Check
+$1,500 flat fee. A full audit of your current IT setup, software spend, security posture, and AI opportunities. Delivers a prioritized report with clear ROI estimates. Timeline: 2–3 weeks. Includes kickoff call, full assessment, written report, and review call.
+
+### AI Automation Projects
+Custom AI solutions that replace manual workflows, expensive SaaS tools, or repetitive processes. Priced on a shared savings model: fee = 50% of the agreed annual saving, paid upfront. Minimum project floor: $5,000 in annual savings. Solution is deployed on the client's own cloud infrastructure (Google Cloud or AWS) — client owns and controls it.
+
+### Business Intelligence
+Natural language dashboards and automated reporting. Clients can query their own data without SQL, a data team, or expensive BI licenses.
+
+### Customer Communication Agents
+AI agents that handle inbound enquiries, qualify leads, respond to reviews, and manage appointment booking — 24/7, in any language.
+
+### Document and Invoice Automation
+Automated extraction, routing, and processing of invoices, contracts, receipts, and forms. Typical outcome: 80–90% reduction in manual processing time.
+
+### Security-First AI Builds
+All solutions are built with security by design — no exposed credentials, no leaky integrations.
+
+## Pricing
+
+| Option | Rate | Notes |
+|---|---|---|
+| Introductory hourly | $120/hr | First 10 hours with any new client. No minimum commitment. |
+| Monthly retainer | $1,000/month | 10 hrs/month at $100/hr. 3-month minimum. Unused hours roll over one month. |
+| Standard hourly | $150/hr | No commitment. Billed in full-hour increments. |
+| IT and AI Health Check | $1,500 flat | Fixed-price audit. |
+| AI Automation (ROI sharing) | 50% of annual saving | Paid upfront. Min $5,000 annual saving. |
+
+Payment: ACH bank transfer.
+
+## About the Founder
+
+Security consultant and former professional penetration tester with 10+ years of experience breaking into companies to find vulnerabilities before attackers could. Spent the last 6+ years securing organizations from the inside, currently serving as Director of Security at an 800-person company. Based in Lehi, Utah. Originally from Denmark.
+
+LinkedIn: https://www.linkedin.com/in/runetk-dk/
+
+## How the ROI Sharing Model Works
+
+1. Client and BrilliantR identify a specific, measurable cost (a software subscription, a manual workflow, a paid service).
+2. The annual value is agreed in writing before any work starts.
+3. BrilliantR's fee is exactly 50% of that agreed saving.
+4. Payment is made upfront; work begins.
+5. The finished solution is deployed on the client's own cloud infrastructure. Client owns it entirely.
