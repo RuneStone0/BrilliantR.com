@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://brilliantr.com/sitemap.xml
+LLMs: https://brilliantr.com/llms.txt
