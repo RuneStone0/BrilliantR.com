@@ -83,8 +83,19 @@
   const form = document.getElementById("contact-form");
   const formStatus = document.getElementById("form-status");
 
+  /* Web3Forms — free backend (250 submissions/month). Access key is public;
+     it just routes submissions to your verified email. */
+  const CONTACT_ENDPOINT = "https://api.web3forms.com/submit";
+  const ACCESS_KEY = "a8dbcc10-389a-4ffd-9bc3-9e99c0df3f3b";
+
+  function setFormStatus(message) {
+    if (!formStatus) return;
+    formStatus.classList.add("is-visible");
+    formStatus.textContent = message;
+  }
+
   if (form) {
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
       const name = (form.elements.name.value || "").trim();
@@ -94,43 +105,39 @@
 
       if (!name || !email || !message) return;
 
-      const subject = "BrilliantR inquiry from " + name;
-      const body =
-        "Name: " + name + "\n" +
-        "Company: " + (company || "—") + "\n" +
-        "Email: " + email + "\n\n" +
-        message;
+      setFormStatus("Sending…");
 
-      const mailto =
-        "mailto:hello@brilliantr.com" +
-        "?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(body);
+      const botcheck = form.elements.botcheck ? form.elements.botcheck.value : "";
 
-      const mailLink = document.createElement("a");
-      mailLink.href = mailto;
-      mailLink.rel = "noopener";
-      document.body.appendChild(mailLink);
-      mailLink.click();
-      document.body.removeChild(mailLink);
-
-      if (formStatus) {
-        formStatus.classList.add("is-visible");
-        formStatus.innerHTML =
-          'If your email app did not open, send your message to ' +
-          '<a href="mailto:hello@brilliantr.com">hello@brilliantr.com</a>.';
-      }
-
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(body).then(
-          () => {
-            if (formStatus) {
-              formStatus.innerHTML =
-                'Message copied to your clipboard. Paste it into an email to ' +
-                '<a href="mailto:hello@brilliantr.com">hello@brilliantr.com</a>.';
-            }
+      try {
+        const response = await fetch(CONTACT_ENDPOINT, {
+          method: "POST",
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
           },
-          () => { /* clipboard blocked */ }
-        );
+          body: JSON.stringify({
+            access_key: ACCESS_KEY,
+            name,
+            company,
+            email,
+            message,
+            botcheck,
+            _replyto: email,
+            _subject: "BrilliantR website inquiry from " + name,
+          }),
+        });
+
+        if (response.ok) {
+          form.reset();
+          setFormStatus("Thanks, " + name + " — your message is on its way. We'll reply to " + email + " soon.");
+        } else if (response.status === 429) {
+          setFormStatus("We've hit our monthly message limit. Please email us directly at hello@brilliantr.com.");
+        } else {
+          setFormStatus("Something went wrong sending your message. Please email us directly at hello@brilliantr.com.");
+        }
+      } catch (err) {
+        setFormStatus("Couldn't reach the server. Please email us directly at hello@brilliantr.com.");
       }
     });
   }
@@ -146,6 +153,14 @@
     let timer = 0;
     let paused = false;
 
+    /* Size the slide area to the active headline so the CTA stays close
+       to the copy — no dead space left over from shorter slides. */
+    function sizeToActive() {
+      const active = slides[current];
+      if (!active) return;
+      carousel.style.height = active.offsetHeight + "px";
+    }
+
     function showSlide(index) {
       current = (index + slides.length) % slides.length;
       slides.forEach((slide, i) => {
@@ -154,9 +169,10 @@
         slide.setAttribute("aria-hidden", active ? "false" : "true");
         if (dots[i]) {
           dots[i].classList.toggle("is-active", active);
-          dots[i].setAttribute("aria-selected", active ? "true" : "false");
+          dots[i].tabIndex = active ? 0 : -1;
         }
       });
+      sizeToActive();
     }
 
     function next() {
@@ -190,8 +206,26 @@
         showSlide(index);
         pause();
         startAuto();
+        dot.focus();
       });
     });
+
+    /* Roving tabindex + arrow-key navigation between the slide dots. */
+    const dotsWrap = document.getElementById("hero-dots");
+    if (dotsWrap) {
+      dotsWrap.addEventListener("keydown", (event) => {
+        if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+        const activeIndex = Array.prototype.indexOf.call(dots, document.activeElement);
+        if (activeIndex === -1) return;
+        event.preventDefault();
+        const direction = event.key === "ArrowRight" ? 1 : -1;
+        const nextIndex = (activeIndex + direction + dots.length) % dots.length;
+        dots[nextIndex].focus();
+        showSlide(nextIndex);
+        pause();
+        startAuto();
+      });
+    }
 
     const heroContent = carousel.parentElement;
     heroContent.addEventListener("mouseenter", pause);
@@ -209,8 +243,19 @@
       }
     });
 
-    showSlide(Math.floor(Math.random() * slides.length));
+    showSlide(0);
     startAuto();
+
+    // Keep the slide area in sync with layout-affecting changes.
+    let resizeTimer = 0;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(sizeToActive, 150);
+    });
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(sizeToActive);
+    }
   }
 
   initHeroSlides();

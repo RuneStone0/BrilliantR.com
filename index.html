@@ -10,6 +10,16 @@
   <title>BrilliantR — AI & IT Consulting for Small Businesses</title>
   <link rel="canonical" href="https://brilliantr.com/">
 
+  <!-- Google tag (gtag.js) — Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T3CMR07BEG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-T3CMR07BEG');
+  </script>
+
+
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://brilliantr.com/">
@@ -28,8 +38,9 @@
   <meta name="twitter:description" content="AI and IT consulting for small businesses without an in-house IT department. Automate workflows, cut software costs, and adopt AI.">
   <meta name="twitter:image" content="https://brilliantr.com/images/og-card.png">
 
-  <link rel="icon" href="images/icon.png" type="image/png">
-  <link rel="apple-touch-icon" href="images/logo.png">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="images/icon.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" sizes="180x180">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -110,8 +121,28 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"></noscript>
   <link rel="stylesheet" href="css/styles.css">
+  <noscript>
+    <style>
+      /* Fallback: without JS the first headline stays in flow and visible. */
+      .hero-slides {
+        height: auto;
+        overflow: visible;
+        transition: none;
+      }
+      .hero-slide {
+        position: static;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+      }
+      .hero-slide.is-active {
+        display: block;
+      }
+    </style>
+  </noscript>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header" id="site-header">
     <div class="nav-inner">
       <a class="logo" href="#top">
@@ -132,6 +163,7 @@
       </button>
       <ul class="nav-links" id="nav-menu">
         <li><a href="#services">Services</a></li>
+        <li><a href="#results">Results</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -139,38 +171,38 @@
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <section class="hero" id="top">
       <canvas class="hero-mesh" id="hero-mesh" aria-hidden="true"></canvas>
       <div class="hero-veil" aria-hidden="true"></div>
       <div class="container fade-in hero-content">
         <div class="hero-slides" id="hero-slides" role="group" aria-roledescription="carousel" aria-label="Headlines">
-          <div class="hero-slide is-active" aria-hidden="false">
+          <div class="hero-slide is-active" id="hero-slide-1" role="group" aria-roledescription="slide" aria-hidden="false">
             <h1>Most small businesses know AI is changing everything. Few know where to start.</h1>
             <p class="lead">BrilliantR helps small and mid-sized businesses adopt AI and optimize their IT systems — without the guesswork, the bloated contracts, or the hourly billing for work that goes nowhere.</p>
           </div>
-          <div class="hero-slide" aria-hidden="true">
-            <h1>You don't need an IT department. You need the right partner.</h1>
+          <div class="hero-slide" id="hero-slide-2" role="group" aria-roledescription="slide" aria-hidden="true">
+            <h2>You don't need an IT department. You need the right partner.</h2>
             <p class="lead">BrilliantR brings senior security and AI expertise to businesses that can't justify a full-time hire — so you get enterprise-grade technology without the enterprise price tag.</p>
           </div>
-          <div class="hero-slide" aria-hidden="true">
-            <h1>Running a non-technical business in a high-tech world?</h1>
+          <div class="hero-slide" id="hero-slide-3" role="group" aria-roledescription="slide" aria-hidden="true">
+            <h2>Running a non-technical business in a high-tech world?</h2>
             <p class="lead">BrilliantR speaks fluent technology so you don't have to — practical AI and IT solutions in plain language, with no jargon and no full-time IT hire required.</p>
           </div>
-          <div class="hero-slide" aria-hidden="true">
-            <h1>Your team is doing work software should be doing. Automate it.</h1>
-            <p class="lead">From invoice processing to customer communication, AI can reclaim hours every week. I only get paid when it actually saves you money.</p>
+          <div class="hero-slide" id="hero-slide-4" role="group" aria-roledescription="slide" aria-hidden="true">
+            <h2>Your team is doing work software should be doing. Automate it.</h2>
+            <p class="lead">From invoice processing to customer communication, AI can reclaim hours every week. We only get paid when it actually saves you money.</p>
           </div>
         </div>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#contact">Get Started</a>
           <a class="hero-link" href="#how-it-works">See how it works</a>
         </div>
-        <div class="hero-dots" id="hero-dots" role="tablist" aria-label="Choose a headline">
-          <button class="hero-dot is-active" type="button" role="tab" aria-selected="true" aria-label="Show headline 1" aria-controls="hero-slides"></button>
-          <button class="hero-dot" type="button" role="tab" aria-selected="false" aria-label="Show headline 2" aria-controls="hero-slides"></button>
-          <button class="hero-dot" type="button" role="tab" aria-selected="false" aria-label="Show headline 3" aria-controls="hero-slides"></button>
-          <button class="hero-dot" type="button" role="tab" aria-selected="false" aria-label="Show headline 4" aria-controls="hero-slides"></button>
+        <div class="hero-dots" id="hero-dots" aria-label="Choose a headline">
+          <button class="hero-dot is-active" type="button" aria-label="Show headline 1"></button>
+          <button class="hero-dot" type="button" aria-label="Show headline 2"></button>
+          <button class="hero-dot" type="button" aria-label="Show headline 3"></button>
+          <button class="hero-dot" type="button" aria-label="Show headline 4"></button>
         </div>
       </div>
     </section>
@@ -179,6 +211,7 @@
       <div class="container fade-in">
         <h2>The barrier to entry has collapsed. Most businesses just don't know it yet.</h2>
         <p class="lead">Capabilities that recently required six-figure software licenses, dedicated engineering teams, or months of implementation are now accessible via custom AI builds, API connections, and no-code platforms.</p>
+        <p class="who-for"><strong>Who this is for:</strong> Small and mid-sized businesses — clinics, construction, trades, professional services, and other organizations with roughly 5–200 employees that don't have an in-house IT department.</p>
         <div class="problem-grid">
           <div class="problem-item">
             <div class="icon-wrap" aria-hidden="true">
@@ -216,7 +249,7 @@
 
     <section class="section-alt" id="services">
       <div class="container fade-in">
-        <h2>What I can help with</h2>
+        <h2>What we can help with</h2>
         <p class="lead">Most small businesses don't have an IT department — and they don't need one. They need a partner who gets the technology, puts the right tools in place, and lets them focus on what they actually do.</p>
         <div class="services-grid">
           <article class="service-card">
@@ -240,7 +273,7 @@
               </svg>
             </div>
             <h3>AI Automation Projects</h3>
-            <p>Replace manual workflows, expensive SaaS tools, or repetitive processes with custom AI solutions. Priced on a shared savings model — I only get paid when you save money.</p>
+            <p>Replace manual workflows, expensive SaaS tools, or repetitive processes with custom AI solutions. Priced on a shared savings model — we only get paid when you save money.</p>
           </article>
           <article class="service-card">
             <div class="icon-wrap" aria-hidden="true">
@@ -282,7 +315,7 @@
               </svg>
             </div>
             <h3>Security-First AI Builds</h3>
-            <p>Every solution I build is designed with security from the ground up. No shortcuts. No exposed credentials. No leaky integrations.</p>
+            <p>Every solution we build is designed with security from the ground up. No shortcuts. No exposed credentials. No leaky integrations.</p>
           </article>
         </div>
       </div>
@@ -290,37 +323,82 @@
 
     <section id="how-it-works">
       <div class="container fade-in">
-        <h2>A model built around your results, not my hours.</h2>
-        <p class="lead">For AI automation projects, I use a shared savings model. Here's how it works.</p>
+        <h2>A model built around your results, not our hours.</h2>
+        <p class="lead">For AI automation projects, we use a shared savings model. Here's how it works.</p>
         <div class="timeline">
           <div class="timeline-step">
             <h3>We define the saving</h3>
             <p>We identify a specific, measurable cost — a software subscription, a manual workflow, a service you're paying for — and agree on the annual value in writing before any work starts.</p>
           </div>
           <div class="timeline-step">
-            <h3>I quote 50% of that saving</h3>
-            <p>My fee is exactly 50% of the agreed annual saving. If the project saves you $10,000 a year, my fee is $5,000. No surprises.</p>
+            <h3>We quote 50% of that saving</h3>
+            <p>The fee is exactly 50% of the agreed annual saving. If the project saves you $10,000 a year, the fee is $5,000. No surprises.</p>
           </div>
           <div class="timeline-step">
-            <h3>You pay upfront, I start building</h3>
+            <h3>You pay upfront, we start building</h3>
             <p>Payment is made before the project begins. This keeps both parties committed and removes any ambiguity about what success looks like.</p>
           </div>
           <div class="timeline-step">
             <h3>You get a working solution</h3>
-            <p>Deployed on your own cloud infrastructure (Google Cloud or AWS). You own it. You control it. Running costs are paid directly by you — I have no incentive to over-engineer.</p>
+            <p>Deployed on your own cloud infrastructure (Google Cloud or AWS). You own it. You control it. Running costs are paid directly by you — we have no incentive to over-engineer.</p>
           </div>
         </div>
-        <p class="how-note">Not every project fits the ROI sharing model. I also offer hourly consulting at $150/hr and a monthly retainer of $1,000/month for 10 hours. New clients get their first 10 hours at $120/hr.</p>
+        <p class="how-note">Not every project fits the ROI sharing model. We also offer hourly consulting at $150/hr and a monthly retainer of $1,000/month for 10 hours. New clients get their first 10 hours at $120/hr.</p>
       </div>
     </section>
 
-    <section class="section-alt" id="about">
+    <section class="section-alt" id="results">
+      <div class="container fade-in">
+        <h2>Proof in the numbers, not in the pitch.</h2>
+        <p class="lead">The shared-savings model means we only win when you do — and when things go wrong, we know how to fix them. Here's what both look like in practice.</p>
+        <div class="proof-grid">
+          <article class="proof-case">
+            <span class="proof-tag">Illustrative example</span>
+            <h3>Invoice processing — accounting firm</h3>
+            <div class="proof-math">
+              <div class="proof-stat">
+                <span class="proof-number">~20</span>
+                <span class="proof-label">hours / month reclaimed</span>
+              </div>
+              <div class="proof-stat">
+                <span class="proof-number">$14,400</span>
+                <span class="proof-label">annual saving agreed</span>
+              </div>
+              <div class="proof-stat">
+                <span class="proof-number">$7,200</span>
+                <span class="proof-label">one-time fee — 50%</span>
+              </div>
+            </div>
+            <p>About 60 invoices a month were being entered by hand — roughly 25 minutes each. Automation now extracts, routes, and files them. The client keeps the entire annual saving, every year after the single one-time fee.</p>
+          </article>
+          <article class="proof-case case-study">
+            <span class="proof-tag filled">Case study</span>
+            <h3>Recovering a hacked e-commerce website</h3>
+            <p><strong>The situation.</strong> A small business owner reached out after discovering their long-running online store had been hijacked. Their website — representing years of built-up search engine credibility — had been silently replaced by a gambling operation. Customers searching for their products were landing on an unrelated gambling site, and the malicious content had begun appearing in Google results under their domain name.</p>
+            <p><strong>The challenge.</strong> This wasn't a simple hack to undo. The attacker had gained deep access to the hosting infrastructure, giving them control over both the website and the domain's DNS routing. That made recovery more complex than just cleaning infected files — we had to rebuild trust in the domain itself before we could restore the site.</p>
+            <h4>What we did</h4>
+            <ul>
+              <li><strong>Website recovery</strong> — identified the attack vector, moved the site to clean infrastructure, and restored the storefront and all e-commerce functionality.</li>
+              <li><strong>Domain &amp; SSL</strong> — redirected DNS through a secure registrar path and provisioned a fresh SSL certificate.</li>
+              <li><strong>Email recovery</strong> — restored staff email accounts that had been disrupted during the infrastructure change.</li>
+              <li><strong>Stability</strong> — diagnosed and resolved a follow-on server overload issue that surfaced after the restoration.</li>
+            </ul>
+            <p class="case-result"><strong>The result.</strong> The client's store was back online and processing orders. Staff email was working. And for the first time, the site had proper security tooling in place to catch threats early — security monitoring, fully updated software, and two-factor authentication on every account.</p>
+          </article>
+        </div>
+        <p class="proof-cta">Wonder what automation would save your business? <a href="#contact">Let's find out</a> — it starts with a conversation, not a contract.</p>
+      </div>
+    </section>
+
+    <section id="about">
       <div class="container fade-in">
         <h2>The person behind it</h2>
         <div class="about-layout">
           <div class="about-photo">
             <img
               src="images/photo.jpg"
+              srcset="images/photo-560.jpg 560w, images/photo.jpg 800w"
+              sizes="(min-width: 768px) 280px, 320px"
               alt="Portrait of the founder of BrilliantR"
               width="800"
               height="1000"
@@ -328,10 +406,10 @@
             >
           </div>
           <div class="about-text">
-            <p>I've spent over 10 years as a security consultant — a professional hacker, hired to break into companies before the wrong people did. The last 6+ years I've been on the other side, securing organizations from the inside, and I currently serve as Director of Security for an 800-person company.</p>
-            <p>That background shapes how I build things. I know how systems fail, how they get exploited, and what corners not to cut. When I build an AI solution for your business, security and reliability aren't afterthoughts — they're baked in from the start.</p>
-            <p>Outside of security, my passions are financial markets — equities and macro — programming, and building internal tools that actually get used. Not prototypes that impress in a demo and collect dust after — things that earn their place by making a business faster, leaner, or more profitable.</p>
-            <p>Born in Denmark, I've lived in Finland, Los Angeles, and Austin, and now make my home in Utah with my wife and two kids.</p>
+            <p>BrilliantR was founded by a security consultant with over 10 years of experience — a professional hacker, hired to break into companies before the wrong people did. The last 6+ years have been spent on the other side, securing organizations from the inside, and the founder currently serves as Director of Security for an 800-person company.</p>
+            <p>That background shapes how we build. We know how systems fail, how they get exploited, and what corners not to cut. When we build an AI solution for your business, security and reliability aren't afterthoughts — they're baked in from the start.</p>
+            <p>Outside of security, the same mindset applies to everything we take on: financial markets — equities and macro — programming, and building internal tools that actually get used. Not prototypes that impress in a demo and collect dust afterward — things that earn their place by making a business faster, leaner, or more profitable.</p>
+            <p>Born in Denmark, the founder has lived in Finland, Los Angeles, and Austin, and now calls Utah home.</p>
             <a class="btn btn-linkedin" href="https://www.linkedin.com/in/runetk-dk/" target="_blank" rel="noopener noreferrer">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
@@ -343,7 +421,7 @@
       </div>
     </section>
 
-    <section id="pricing">
+    <section class="section-alt" id="pricing">
       <div class="container fade-in">
         <h2>Simple, transparent pricing</h2>
         <div class="pricing-grid">
@@ -395,7 +473,7 @@
       </div>
     </section>
 
-    <section class="section-alt" id="contact">
+    <section id="contact">
       <div class="container fade-in">
         <h2>Ready to find out what AI can do for your business?</h2>
         <p class="lead">The easiest way to start is the IT and AI Health Check — a fixed-price assessment with no ongoing commitment. Or just reach out with a question.</p>
@@ -416,6 +494,8 @@
             <label for="message">Message</label>
             <textarea id="message" name="message" rows="4" required></textarea>
           </div>
+          <!-- Honeypot: bots fill this in, humans don't. Hidden by CSS. -->
+          <input type="text" name="botcheck" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button class="btn btn-primary" type="submit">Send Message</button>
         </form>
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
@@ -425,12 +505,29 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <span class="footer-brand">
-        <img src="images/logo.png" alt="" width="24" height="24">
-        BrilliantR
-      </span>
-      <span class="footer-meta">Lehi, Utah · <span id="year"></span></span>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col footer-brand-col">
+          <span class="footer-brand">
+            <img src="images/logo.png" alt="" width="24" height="24">
+            BrilliantR
+          </span>
+          <p class="footer-tagline">AI &amp; IT consulting for small businesses without an in-house IT department.</p>
+        </div>
+        <nav class="footer-col footer-nav" aria-label="Footer">
+          <a href="#services">Services</a>
+          <a href="#results">Results</a>
+          <a href="#about">About</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="footer-col footer-contact">
+          <a href="mailto:hello@brilliantr.com">hello@brilliantr.com</a>
+          <a href="https://www.linkedin.com/in/runetk-dk/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+      <p class="footer-meta">Lehi, Utah · <span id="year"></span></p>
+      <p class="footer-privacy">Privacy: we only use your contact details to reply to you, and Google Analytics to understand how the site is used.</p>
     </div>
   </footer>
 
