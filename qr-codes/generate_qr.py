@@ -38,7 +38,10 @@ def generate_qr(
     fill_color: str = "black",
     back_color: str = "white",
     box_size: int = 12,
-    logo_size_ratio: float = 0.28,
+    # 0.28 sits right at the failure edge for H-level error correction once the white
+    # backing plate is included — verified against both OpenCV and zbar decoders.
+    # 0.22 keeps a solid margin for real-world scanning (angle, glare, print quality).
+    logo_size_ratio: float = 0.22,
 ) -> Path:
     qr = qrcode.QRCode(
         # High error correction (~30% recoverable) so the logo can cover

@@ -1,0 +1,67 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --br-bg: #242B38; --br-deep: #1C222D; --br-primary: #E8EEF4;
+    --br-accent: #4A9FC4; --br-text: #C8D0DA; --br-muted: #8B95A5;
+  }
+  .sign { width:100%; aspect-ratio:4/3; overflow:hidden; display:flex; flex-direction:column; container-type:inline-size; }
+  .sign-top { flex:2; padding:5% 6%; display:flex; flex-direction:column; justify-content:center; overflow:hidden; }
+  .sign-bottom { flex:1; padding:3% 3% 3% 5%; display:flex; flex-direction:row; align-items:center; gap:2.5%; border-top:2px solid rgba(74,159,196,0.3); overflow:hidden; }
+  .sign-bottom-text { flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center; gap:0.5cqi; text-align:left; }
+  .brand-mark { flex:0 0 auto; display:flex; align-items:center; justify-content:flex-end; height:100%; padding-left:1.5%; border-left:1px solid rgba(74,159,196,0.3); }
+  .qr-code { flex-shrink:0; width:18%; aspect-ratio:1; background-size:contain; background-repeat:no-repeat; background-position:center; border-radius:4px; }
+  .kw { color:var(--br-accent); }
+  .f-intro    { font-family:Impact,"Arial Narrow",sans-serif; font-size:8cqi;  line-height:1.0;  letter-spacing:0.01em;  text-transform:uppercase; margin-bottom:1cqi; }
+  .f-punchline{ font-family:Impact,"Arial Narrow",sans-serif; font-size:13cqi; line-height:0.9;  letter-spacing:-0.01em; text-transform:uppercase; }
+  .f-ai       { font-family:Impact,"Arial Narrow",sans-serif; font-size:21cqi; line-height:0.88; letter-spacing:-0.01em; text-transform:uppercase; margin-top:0.5cqi; }
+  .f-statement{ font-family:Impact,"Arial Narrow",sans-serif; font-size:13cqi; line-height:0.92; letter-spacing:-0.01em; text-transform:uppercase; }
+  .f-phone    { font-family:Impact,"Arial Narrow",sans-serif; font-size:9.5cqi; letter-spacing:0.02em; line-height:1; white-space:nowrap; }
+  .f-tagline  { font-family:Impact,"Arial Narrow",sans-serif; font-size:5cqi;  letter-spacing:0.05em; text-transform:uppercase; line-height:1; white-space:nowrap; }
+  /* Font-size + letter-spacing tuned so this tracks out to exactly match the width of the phone number (.f-phone) below it */
+  .f-cta      { font-family:Impact,"Arial Narrow",sans-serif; font-size:5cqi; letter-spacing:0.0886em; text-transform:uppercase; line-height:1; white-space:nowrap; }
+  .f-brand    { font-family:Impact,"Arial Narrow",sans-serif; font-size:3.1cqi; letter-spacing:0.02em; line-height:1; white-space:nowrap; }
+  .f-url      { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:3.5cqi; font-weight:400; letter-spacing:0.06em; line-height:1; white-space:nowrap; }
+
+  /* Dark variant — bright text with a dark stroke so it pops off the background */
+  .brand-dark { background:radial-gradient(ellipse 80% 70% at 82% 30%,rgba(74,159,196,0.16) 0%,transparent 55%),var(--br-bg); }
+  .brand-dark .qr-code { background-image:url("assets/qr-dark.png"); }
+  .brand-dark .f-intro    { color:var(--br-primary); }
+  .brand-dark .f-ai       { color:var(--br-accent); }
+  .brand-dark .f-punchline{ color:var(--br-primary); }
+  .brand-dark .f-statement{ color:var(--br-primary); }
+  .brand-dark .f-phone    { color:var(--br-primary); }
+  .brand-dark .f-tagline  { color:var(--br-primary); }
+  .brand-dark .f-cta      { color:var(--br-primary); }
+  .brand-dark .f-brand    { color:var(--br-text); }
+  .brand-dark .f-url      { color:var(--br-muted); }
+  .brand-dark .f-intro, .brand-dark .f-punchline, .brand-dark .f-ai,
+  .brand-dark .f-statement, .brand-dark .f-phone, .brand-dark .f-cta,
+  .brand-dark .f-tagline, .brand-dark .kw {
+    -webkit-text-stroke: 0.02em var(--br-deep);
+    paint-order: stroke fill;
+  }
+
+  /* Light variant — intro and CTA use #4A5568 (dark enough on #E8EEF4) */
+  .brand-light { background:var(--br-primary); }
+  .brand-light .sign-bottom { border-top-color:rgba(74,159,196,0.4); }
+  .brand-light .brand-mark { border-left-color:rgba(74,159,196,0.4); }
+  .brand-light .qr-code { background-image:url("assets/qr-light.png"); }
+  .brand-light .f-intro    { color:#4A5568; }
+  .brand-light .f-ai       { color:var(--br-accent); }
+  .brand-light .f-punchline{ color:var(--br-deep); }
+  .brand-light .f-statement{ color:var(--br-deep); }
+  .brand-light .f-phone    { color:var(--br-deep); }
+  .brand-light .f-tagline  { color:#4A5568; }
+  .brand-light .f-cta      { color:#4A5568; }
+  .brand-light .f-brand    { color:#7A8899; }
+  .brand-light .f-url      { color:#7A8899; }
+
+  body { background:var(--br-deep); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color:var(--br-muted); padding:48px 24px 80px; }
+  .page { max-width:980px; margin:0 auto; }
+  .page-header { margin-bottom:48px; }
+  .page-header h1 { font-size:11px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--br-muted); margin-bottom:6px; }
+  .page-header p { font-size:13px; color:#3A4454; }
+  .section { margin-bottom:52px; }
+  .section-label { font-size:10px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--br-muted); margin-bottom:8px; }
+  .section-copy { font-size:12px; color:#3A4454; margin-bottom:14px; font-style:italic; line-height:1.5; }
+  .pair { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .color-label { font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#3A4454; text-align:center; margin-top:8px; }
