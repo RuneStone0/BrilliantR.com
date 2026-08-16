@@ -83,7 +83,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("url", nargs="?", default=None, help=f"URL to encode (default: {DEFAULT_URL})")
     parser.add_argument("-u", "--url-flag", dest="url_flag", default=None, help="Same as the positional URL argument, provided as a named flag")
-    parser.add_argument("-o", "--output", type=Path, default=DEFAULT_OUTPUT, help="Output PNG path (default: qr-codes/qr-code.png)")
+    parser.add_argument("-o", "--output", type=Path, default=DEFAULT_OUTPUT, help="Output PNG path (default: qr-code-generate/qr-code.png)")
     parser.add_argument("--logo", type=Path, default=DEFAULT_LOGO, help="Path to logo image (default: website/logos/icon-diamond-black.png)")
     parser.add_argument("--no-logo", action="store_true", help="Generate a plain QR code without a logo")
     parser.add_argument("--color", default="black", help="QR foreground color, e.g. black or #0A0A0A (default: black)")
