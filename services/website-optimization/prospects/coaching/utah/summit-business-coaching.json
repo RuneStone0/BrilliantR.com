@@ -1,0 +1,30 @@
+{
+  "id": "summit-business-coaching",
+  "business": "Summit Business Coaching LLC",
+  "vertical": "coaching",
+  "coach": "Steve Potter (unconfirmed at new domain)",
+  "location": {
+    "city": "Lehi (per original listing)",
+    "state": "UT"
+  },
+  "team_size": null,
+  "website": "https://summitbusinesscoaching.net/",
+  "contact": {
+    "email": null,
+    "email_source": null,
+    "phone": null
+  },
+  "discovered": {
+    "date": "2026-08-23",
+    "method": "web search"
+  },
+  "curation": null,
+  "outreach": {
+    "report_path": null,
+    "email_draft_path": null,
+    "date_sent": null,
+    "follow_up_date": null
+  },
+  "status": "discovered",
+  "blocked_reason": "Original domain summitbusinesscoachingllc.com is fully dead (DNS failure). User pointed to summitbusinesscoaching.net as a possible new home, but that site doesn't name Steve Potter or Lehi -- reads as a 'senior coach only', fully remote, no-fixed-location practice. Confirm identity (e.g. a call) before curation can run."
+}

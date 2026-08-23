@@ -1,0 +1,26 @@
+{
+  "id": "your-fulfilling-life",
+  "business": "Your Fulfilling Life",
+  "vertical": "coaching",
+  "coach": "Stacy Harshman",
+  "location": {
+    "city": "Boise",
+    "state": "ID"
+  },
+  "team_size": "solo",
+  "website": "https://yourfulfillinglife.com/",
+  "contact": {
+    "email": "stacy@yourfullfillinglife.com",
+    "email_source": "public mailto link on homepage ('Feel free to contact me' block). Note: the email domain (yourfullfillinglife.com, double 'l') does not match the site's actual domain (yourfulfillinglife.com) — appears to be a typo on the coach's own site, not a transcription error here. Worth confirming by phone before relying on it.",
+    "phone": "(208) 424-9191"
+  },
+  "discovered": {
+    "date": "2026-08-23",
+    "method": "web search: 'career coach Idaho independent coaching website'"
+  },
+  "curation": null,
+  "outreach": { "report_path": null, "email_draft_path": null, "date_sent": null, "follow_up_date": null },
+  "status": "discovered",
+  "blocked_reason": null,
+  "notes": "Career coaching only (L.I.F.E. framework: Listen, Initiate, Formulate, Execute). WordPress (Beaver Builder page builder) on GoDaddy-related hosting — NS on domaincontrol.com, embeds a nebula.wsimg.com image asset, response proxied through Cloudflare. Site includes Home, Services, Meet the Coach, Blog, Testimonials, FAQ & Contact pages."
+}

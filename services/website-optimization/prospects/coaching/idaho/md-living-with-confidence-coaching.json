@@ -1,0 +1,40 @@
+{
+  "id": "md-living-with-confidence-coaching",
+  "business": "MD Living with Confidence Coaching",
+  "vertical": "coaching",
+  "coach": "Marie",
+  "location": {
+    "city": "Boise",
+    "state": "ID"
+  },
+  "team_size": "solo",
+  "website": "https://autismadhdcoachboise.com/",
+  "contact": {
+    "email": "livingwithconfidencellc@gmail.com",
+    "email_source": "publicly listed on the homepage footer, encoded via Cloudflare email-obfuscation (data-cfemail) rather than a plain mailto — decoded from the page's own markup, not scraped from a third party",
+    "phone": "(208) 809-0025"
+  },
+  "discovered": {
+    "date": "2026-08-23",
+    "method": "web search: 'life coach Eagle Idaho OR Nampa Idaho website solo'"
+  },
+  "curation": {
+    "tier": "tier1",
+    "platform": "GoDaddy Website Builder (Websites + Marketing)",
+    "est_current_cost_per_year": 210,
+    "est_current_cost_range": "180-240",
+    "est_client_savings_per_year": 102,
+    "lighthouse": {
+      "performance": 78,
+      "accessibility": 87,
+      "best_practices": 100,
+      "seo": 100
+    },
+    "migration_complexity": "clean",
+    "reasoning": "Fingerprint (UIkit CSS, /images/{id}/ asset paths, Zoominfobot robots.txt entry, GoDaddy registrar) confirms GoDaddy Website Builder, not the WordPress the discovery notes guessed. No cart, login, or CRM backbone in the nav or markup — the 'schedule a free discovery call' booking is handled by an external widget (customerbase.com), which doesn't require the platform's paid Premium tier or count as an all-in-one CRM dependency. Lighthouse is solid across the board (best-practices/SEO both 100, performance 78) so there's no dramatic technical story to lead with, but the site is paying $180-240/yr on a builder plan for a 5-page business-card site with an external booking link — a clean, same-day DNS-repoint migration with a straightforward dollar pitch ($102/yr savings)."
+  },
+  "outreach": { "report_path": null, "email_draft_path": null, "date_sent": null, "follow_up_date": null },
+  "status": "curated",
+  "blocked_reason": null,
+  "notes": "Life coaching specialized for Autistic and ADHD adults (confidence/executive-function/time-management coaching) — core practice is coaching, not therapy; coach holds 4 coaching certifications (Life, Health, Neurodivergent, ADHD). Serves Boise, Meridian, McCall, Eagle, Nampa and online. WordPress (Astra theme, Divi/Beaver-style builder markers present) behind Cloudflare — origin host not identifiable from headers alone. Business ~3 years old per site copy."
+}

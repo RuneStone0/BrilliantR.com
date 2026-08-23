@@ -1,0 +1,44 @@
+{
+  "id": "bravely-rooted-coaching",
+  "business": "Bravely Rooted Coaching",
+  "vertical": "coaching",
+  "coach": "Bernadette McKeever",
+  "location": {
+    "city": "Salt Lake City",
+    "state": "UT"
+  },
+  "team_size": "solo",
+  "website": "https://bravelyrootedcoaching.com/",
+  "contact": {
+    "email": "bernmckeevercoaching@gmail.com",
+    "email_source": "public 'Email Me' mailto link on her own homepage",
+    "phone": null
+  },
+  "discovered": {
+    "date": "2026-08-23",
+    "method": "web search"
+  },
+  "curation": {
+    "tier": "tier1",
+    "platform": "Squarespace",
+    "est_current_cost_per_year": 275,
+    "est_current_cost_range": null,
+    "est_client_savings_per_year": 138,
+    "lighthouse": {
+      "performance": 32,
+      "accessibility": 98,
+      "best_practices": 100,
+      "seo": 100
+    },
+    "migration_complexity": "clean",
+    "reasoning": "No login/store/CRM dependency \u2014 booking is just a Zoom link. Performance 32 is the worst Performance score in the batch and easy to demonstrate concretely (15-19s mobile load time). Best story-to-effort ratio in tier1."
+  },
+  "outreach": {
+    "report_path": "reports/bravely-rooted-coaching/report.pdf",
+    "email_draft_path": "reports/bravely-rooted-coaching/email.md",
+    "date_sent": null,
+    "follow_up_date": null
+  },
+  "status": "outreach_ready",
+  "blocked_reason": null
+}

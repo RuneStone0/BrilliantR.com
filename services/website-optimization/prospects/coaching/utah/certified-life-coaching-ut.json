@@ -1,0 +1,44 @@
+{
+  "id": "certified-life-coaching-ut",
+  "business": "Certified Life Coaching UT",
+  "vertical": "coaching",
+  "coach": "Sondra Shepherd",
+  "location": {
+    "city": "Richfield",
+    "state": "UT"
+  },
+  "team_size": "solo",
+  "website": "https://www.helpingyouloveyourlife.com/",
+  "contact": {
+    "email": null,
+    "email_source": null,
+    "phone": null
+  },
+  "discovered": {
+    "date": "2026-08-23",
+    "method": "web search"
+  },
+  "curation": {
+    "tier": "tier1",
+    "platform": "Duda",
+    "est_current_cost_per_year": 265,
+    "est_current_cost_range": null,
+    "est_client_savings_per_year": 132,
+    "lighthouse": {
+      "performance": 75,
+      "accessibility": 88,
+      "best_practices": 96,
+      "seo": 92
+    },
+    "migration_complexity": "clean",
+    "reasoning": "Plain business-card site, nothing to untangle. Perf 75 is mild but honest."
+  },
+  "outreach": {
+    "report_path": null,
+    "email_draft_path": null,
+    "date_sent": null,
+    "follow_up_date": null
+  },
+  "status": "curated",
+  "blocked_reason": null
+}

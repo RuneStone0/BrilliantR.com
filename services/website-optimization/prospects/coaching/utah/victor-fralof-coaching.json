@@ -1,0 +1,30 @@
+{
+  "id": "victor-fralof-coaching",
+  "business": "Victor Fralof Coaching",
+  "vertical": "coaching",
+  "coach": "Victor Fralof",
+  "location": {
+    "city": "American Fork",
+    "state": "UT"
+  },
+  "team_size": null,
+  "website": "https://victor-fralof.com/",
+  "contact": {
+    "email": null,
+    "email_source": null,
+    "phone": null
+  },
+  "discovered": {
+    "date": "2026-08-23",
+    "method": "web search"
+  },
+  "curation": null,
+  "outreach": {
+    "report_path": null,
+    "email_draft_path": null,
+    "date_sent": null,
+    "follow_up_date": null
+  },
+  "status": "discovered",
+  "blocked_reason": "Domain doesn't resolve (DNS failure) despite showing up in search/directory listings (Alignable, YouTube, Instagram @imvictorvic). Confirm still operating before curation can run."
+}
