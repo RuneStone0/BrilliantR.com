@@ -1,0 +1,30 @@
+{
+  "id": "respectedandconnected",
+  "business": "Relationship Coach & RLT Practitioner in Utah",
+  "vertical": "coaching",
+  "coach": null,
+  "location": {
+    "city": "Utah (online)",
+    "state": "UT"
+  },
+  "team_size": null,
+  "website": "https://www.respectedandconnected.com/",
+  "contact": {
+    "email": null,
+    "email_source": null,
+    "phone": null
+  },
+  "discovered": {
+    "date": "2026-08-24",
+    "method": "web search sweep"
+  },
+  "curation": null,
+  "outreach": {
+    "report_path": null,
+    "email_draft_path": null,
+    "date_sent": null,
+    "follow_up_date": null
+  },
+  "status": "discovered",
+  "blocked_reason": null
+}

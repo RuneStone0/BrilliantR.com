@@ -1,0 +1,30 @@
+{
+  "id": "harmonylifecoach",
+  "business": "Harmony Life Coaching",
+  "vertical": "coaching",
+  "coach": null,
+  "location": {
+    "city": "Meridian",
+    "state": "ID"
+  },
+  "team_size": null,
+  "website": "https://www.harmonylifecoach.net/",
+  "contact": {
+    "email": null,
+    "email_source": null,
+    "phone": "2087795970"
+  },
+  "discovered": {
+    "date": "2026-08-24",
+    "method": "web search sweep"
+  },
+  "curation": null,
+  "outreach": {
+    "report_path": null,
+    "email_draft_path": null,
+    "date_sent": null,
+    "follow_up_date": null
+  },
+  "status": "discovered",
+  "blocked_reason": null
+}

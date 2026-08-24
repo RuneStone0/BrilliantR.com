@@ -1,0 +1,30 @@
+{
+  "id": "shannonbayneslifecoaching",
+  "business": "Shannon Baynes Life Coaching",
+  "vertical": "coaching",
+  "coach": null,
+  "location": {
+    "city": "Park City",
+    "state": "UT"
+  },
+  "team_size": null,
+  "website": "https://www.shannonbayneslifecoaching.com/",
+  "contact": {
+    "email": null,
+    "email_source": null,
+    "phone": "435-655-1536"
+  },
+  "discovered": {
+    "date": "2026-08-24",
+    "method": "web search sweep"
+  },
+  "curation": null,
+  "outreach": {
+    "report_path": null,
+    "email_draft_path": null,
+    "date_sent": null,
+    "follow_up_date": null
+  },
+  "status": "discovered",
+  "blocked_reason": null
+}

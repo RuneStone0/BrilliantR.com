@@ -1,0 +1,30 @@
+{
+  "id": "leadingwithlovecollective",
+  "business": "Leading with Love Collective",
+  "vertical": "coaching",
+  "coach": null,
+  "location": {
+    "city": "Nampa",
+    "state": "ID"
+  },
+  "team_size": null,
+  "website": "https://leadingwithlovecollective.com/",
+  "contact": {
+    "email": "bre@treasurewellness.net",
+    "email_source": "public mailto link/email on homepage",
+    "phone": "+12087809883"
+  },
+  "discovered": {
+    "date": "2026-08-24",
+    "method": "web search sweep"
+  },
+  "curation": null,
+  "outreach": {
+    "report_path": null,
+    "email_draft_path": null,
+    "date_sent": null,
+    "follow_up_date": null
+  },
+  "status": "discovered",
+  "blocked_reason": null
+}

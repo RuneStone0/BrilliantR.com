@@ -1,0 +1,30 @@
+{
+  "id": "elemntalwellness",
+  "business": "Elemntal Wellness",
+  "vertical": "coaching",
+  "coach": null,
+  "location": {
+    "city": "Salt Lake City",
+    "state": "UT"
+  },
+  "team_size": null,
+  "website": "https://elemntalwellness.com/",
+  "contact": {
+    "email": "elemntalwellness@gmail.com",
+    "email_source": "public mailto link/email on homepage",
+    "phone": null
+  },
+  "discovered": {
+    "date": "2026-08-24",
+    "method": "web search sweep"
+  },
+  "curation": null,
+  "outreach": {
+    "report_path": null,
+    "email_draft_path": null,
+    "date_sent": null,
+    "follow_up_date": null
+  },
+  "status": "discovered",
+  "blocked_reason": null
+}
