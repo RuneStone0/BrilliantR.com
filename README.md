@@ -4,21 +4,25 @@
 
 ## About
 
-Single-page marketing site for BrilliantR. Built as a self-contained `index.html` — no framework, no build step, no dependencies beyond a Google Fonts import.
+Public marketing website for BrilliantR. Built as a self-contained static site — no framework, no build step, no dependencies beyond a Google Fonts import.
 
 ## Structure
 
 ```
-index.html      # Entire site — HTML, CSS, and JS in one file
-images/         # Site images (logo, photo, icon)
-logos/          # Brand assets
-CNAME           # GitHub Pages custom domain
+website/
+├── index.html   # Entire site — HTML, CSS, and JS in one file
+├── css/         # Stylesheets
+├── images/      # Site images (logo, photo, icon)
+├── js/          # Scripts
+└── logos/       # Brand assets
 ```
+
+> Internal operations content (services, prospects, marketing, QR tooling) lives in the private repo **RuneStone0/brilliantr**, not here.
 
 ## Hosting
 
-Deployed via GitHub Pages on the `main` branch. Pushes to `main` go live automatically at [brilliantr.com](https://brilliantr.com).
+Deployed via GitHub Pages on the `main` branch (`.github/workflows/deploy-pages.yml`, source: `./website`). Pushes to `main` go live automatically at [brilliantr.com](https://brilliantr.com).
 
 ## Development
 
-Open `index.html` directly in a browser — no server needed.
+Open `website/index.html` directly in a browser — no server needed.
