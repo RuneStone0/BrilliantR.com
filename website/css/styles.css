@@ -727,7 +727,7 @@ p {
   font-weight: 500;
 }
 
-/* Real client case study (vs. the illustrative example above) */
+/* Real client case study */
 .proof-tag.filled {
   background: var(--accent);
   border-color: var(--accent);
