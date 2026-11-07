@@ -30,27 +30,26 @@
 
   <main id="main" class="pay-main">
     <div class="container">
-      <div class="pay-head">
-        <div class="pay-head-text">
+      <div class="pay-hero">
+        <div class="pay-hero-main">
           <p class="pay-eyebrow">Invoice payment</p>
           <h1>Pay BrilliantR</h1>
+          <p class="lead">Pick whichever method is easiest for you. Every option lands in the same place — no account setup, no forms.</p>
+
+          <div class="pay-summary" id="pay-summary" hidden>
+            <div>
+              <span class="pay-summary-label">Amount due</span>
+              <span class="pay-summary-amount" id="pay-amount">—</span>
+            </div>
+            <div class="pay-summary-meta">
+              <span id="pay-inv-line"></span>
+              <span id="pay-ref-line" class="pay-ref" hidden></span>
+            </div>
+          </div>
         </div>
+
         <div class="pay-qr" id="pay-qr" hidden>
           <canvas id="pay-qr-canvas" width="320" height="320" aria-label="QR code for this payment page"></canvas>
-          <p class="pay-qr-label">Scan to pay on your phone</p>
-          <button class="pay-copy" type="button" id="pay-qr-copy">Copy QR</button>
-        </div>
-      </div>
-      <p class="lead">Pick whichever method is easiest for you. Every option lands in the same place — no account setup, no forms.</p>
-
-      <div class="pay-summary" id="pay-summary" hidden>
-        <div>
-          <span class="pay-summary-label">Amount due</span>
-          <span class="pay-summary-amount" id="pay-amount">—</span>
-        </div>
-        <div class="pay-summary-meta">
-          <span id="pay-inv-line"></span>
-          <span id="pay-ref-line" class="pay-ref" hidden></span>
         </div>
       </div>
 
