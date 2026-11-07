@@ -32,9 +32,17 @@
 /* ——— Hero: copy and amount on the left, QR on the right ——— */
 .pay-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 3rem;
+  /* Same tracks and gap as .pay-grid, so the copy above lines up with the
+     left-hand tile column and the QR sits over the right-hand one. */
+  gap: 1rem;
   align-items: start;
+  margin: 0 0 2rem;
+}
+
+@media (min-width: 620px) {
+  .pay-hero {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .pay-hero-main {
@@ -43,6 +51,7 @@
 
 /* The code sits directly on the page — no card, no caption, no controls. */
 .pay-qr {
+  justify-self: end;
   padding-top: 0.2rem;
 }
 
@@ -85,7 +94,7 @@
   border-left: 3px solid var(--accent);
   border-radius: 10px;
   padding: 1.25rem 1.5rem;
-  margin: 0 0 2rem;
+  margin: 0;
   max-width: 42rem;
 }
 
