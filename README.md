@@ -11,11 +11,16 @@ Public marketing website for BrilliantR. Built as a self-contained static site �
 ```
 website/
 ├── index.html   # Entire site — HTML, CSS, and JS in one file
+├── pay/         # Invoice payment page (QR target) — unlisted, noindex
 ├── css/         # Stylesheets
 ├── images/      # Site images (logo, photo, icon)
 ├── js/          # Scripts
 └── logos/       # Brand assets
 ```
+
+`pay/` is reached only from the QR code on an invoice:
+`brilliantr.com/pay/?amt=1720.00&inv=001`. Payment handles and account details live in
+`pay/pay-details.js`; a method with `enabled: false` is not rendered.
 
 > Internal operations content (services, prospects, marketing, QR tooling) lives in the private repo **RuneStone0/brilliantr**, not here.
 

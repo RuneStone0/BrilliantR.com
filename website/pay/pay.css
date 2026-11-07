@@ -1,0 +1,293 @@
+/* ——— BrilliantR /pay ———
+ * Layered on top of ../css/styles.css so the page inherits the site's tokens,
+ * type scale and buttons. Only payment-specific pieces live here.
+ */
+
+.pay-main {
+  padding: 3rem 0 4rem;
+  min-height: 60vh;
+}
+
+.pay-tag {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+  white-space: nowrap;
+}
+
+.pay-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+
+.pay-main h1 {
+  max-width: 24ch;
+}
+
+/* ——— Amount summary ——— */
+.pay-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  margin: 0 0 2rem;
+  max-width: 42rem;
+}
+
+.pay-summary[hidden] {
+  display: none;
+}
+
+.pay-summary-label {
+  display: block;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.15rem;
+}
+
+.pay-summary-amount {
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.pay-summary-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-align: right;
+}
+
+@media (max-width: 480px) {
+  .pay-summary-meta {
+    text-align: left;
+  }
+}
+
+/* ——— Method tiles ——— */
+.pay-grid {
+  display: grid;
+  gap: 1rem;
+  margin: 0 0 2rem;
+}
+
+@media (min-width: 620px) {
+  .pay-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.pay-tile {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.35rem 1.35rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.pay-tile:hover,
+.pay-tile:focus-within {
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.pay-tile.is-open {
+  border-color: var(--accent);
+}
+
+.pay-tile-head {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.pay-mark {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #0F1419;
+}
+
+.pay-mark--venmo { background: #3D95CE; }
+.pay-mark--paypal { background: #C9D2DF; }
+.pay-mark--wise { background: #9FE870; }
+.pay-mark--bitcoin { background: #F7931A; }
+
+.pay-tile h2 {
+  font-size: 1.05rem;
+  margin: 0 0 0.1rem;
+  max-width: none;
+}
+
+.pay-tile-sub {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.pay-tile-body {
+  font-size: 0.92rem;
+  color: var(--text);
+  margin: 0;
+}
+
+.pay-tile-foot {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+}
+
+.pay-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 500;
+  color: var(--accent);
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.pay-link:hover {
+  text-decoration: underline;
+}
+
+.pay-link svg {
+  width: 15px;
+  height: 15px;
+}
+
+.pay-handle {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85rem;
+  color: var(--muted);
+  word-break: break-all;
+}
+
+/* Expandable detail panel (bank details, addresses) */
+.pay-details {
+  display: none;
+  margin-top: 0.25rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.85rem;
+}
+
+.pay-tile.is-open .pay-details {
+  display: block;
+}
+
+.pay-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.35rem 0;
+  font-size: 0.9rem;
+  border-bottom: 1px dotted var(--border);
+}
+
+.pay-row:last-child {
+  border-bottom: 0;
+}
+
+.pay-row dt {
+  color: var(--muted);
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+}
+
+.pay-row dd {
+  margin: 0;
+  color: var(--primary);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.88rem;
+  text-align: right;
+  word-break: break-all;
+}
+
+.pay-row dd.is-name {
+  font-family: inherit;
+}
+
+.pay-copy {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 5px;
+  font: inherit;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.45rem;
+  cursor: pointer;
+  margin-left: 0.4rem;
+  white-space: nowrap;
+}
+
+.pay-copy:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.pay-copy.is-done {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Placeholder state, only reachable with ?preview=1 */
+.pay-tile.is-placeholder {
+  opacity: 0.55;
+  border-style: dashed;
+}
+
+.pay-tile.is-placeholder:hover {
+  border-color: var(--border);
+  box-shadow: none;
+}
+
+.pay-help {
+  font-size: 0.9rem;
+  color: var(--muted);
+  max-width: 46rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+}
+
+/* Print: the invoice already carries the QR, this page is screen-only. */
+@media print {
+  .pay-grid { display: none; }
+}
