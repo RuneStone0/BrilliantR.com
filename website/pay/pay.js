@@ -242,16 +242,9 @@
         "address below. The dollar figure holds at the rate when the coins arrive, so tell us once it's sent.");
     }
 
-    // Primary action: the Strike referral, so a payer without a wallet lands on
-    // Strike (and the signup is credited). Falls back to the Lightning URI.
-    if (m.referral) {
-      link.href = m.referral;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      link.innerHTML = "Open Strike " +
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
-        'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>';
-    } else if (m.lightning) {
+    // Paying is the primary action; Strike is only a hint for someone with no
+    // wallet at all, so it never takes the main button.
+    if (m.lightning) {
       link.href = "lightning:" + m.lightning;
       link.textContent = "Pay with Lightning";
     } else {
@@ -277,6 +270,15 @@
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
         'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>');
       link.parentElement.appendChild(btcToggle);
+      if (m.referral) {
+        var hint = document.createElement("a");
+        hint.className = "pay-link pay-link--hint";
+        hint.href = m.referral;
+        hint.target = "_blank";
+        hint.rel = "noopener noreferrer";
+        hint.textContent = "No wallet yet? Strike";
+        link.parentElement.appendChild(hint);
+      }
     }
   })();
 

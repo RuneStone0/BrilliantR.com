@@ -385,3 +385,15 @@
 @media print {
   .pay-grid { display: none; }
 }
+
+/* A secondary hint (e.g. an exchange signup) never competes with the action. */
+.pay-link--hint {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-left: 0.75rem;
+  opacity: 0.9;
+}
+
+.pay-link--hint:hover {
+  color: var(--primary);
+}
