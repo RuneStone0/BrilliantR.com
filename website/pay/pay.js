@@ -177,40 +177,44 @@
     if (!methodActive("bitcoin")) {
       return placeholder("bitcoin", "Bitcoin is not connected to this page yet.");
     }
-    var link = tile("bitcoin").querySelector('[data-action="btc"]');
-    var ref = reference();
+    var t = tile("bitcoin");
+    var link = t.querySelector('[data-action="btc"]');
+    var panel = t.querySelector('[data-panel="bitcoin"] dl');
 
-    if (m.address) {
-      var uri = "bitcoin:" + m.address + "?label=" + encodeURIComponent("BrilliantR") +
-        "&message=" + encodeURIComponent(ref);
-      link.href = uri;
-      link.textContent = "Open in wallet";
-      fill("btc-body", "Send the invoice amount in BTC to the address below. On-chain only — " +
-        "the dollar figure holds at the rate when the coins arrive, so tell us once it's sent.");
-      fill("btc-address", m.address);
-      // Without a toggle the address sits in a panel nobody can open.
-      var btcToggle = document.createElement("button");
-      btcToggle.type = "button";
-      btcToggle.className = "pay-link";
-      btcToggle.setAttribute("data-action", "toggle-details");
-      btcToggle.setAttribute("data-label-open", "Show address");
-      btcToggle.setAttribute("data-label-close", "Hide address");
-      btcToggle.setAttribute("aria-expanded", "false");
-      btcToggle.appendChild(document.createTextNode("Show address "));
-      btcToggle.insertAdjacentHTML("beforeend",
+    function addRow(label, value, stacked) {
+      var row = document.createElement("div");
+      row.className = "pay-row" + (stacked ? " pay-row--stack" : "");
+      var dt = document.createElement("dt");
+      dt.textContent = label;
+      var dd = document.createElement("dd");
+      dd.textContent = value;
+      dd.setAttribute("data-copy", "");
+      row.appendChild(dt);
+      row.appendChild(dd);
+      panel.appendChild(row);
+      addCopy(dd);
+    }
+
+    if (m.lightning) addRow("Lightning", m.lightning, false);
+    if (m.address) addRow("On-chain", m.address, true);
+
+    if (m.lightning || m.address) {
+      fill("btc-body", "Pay over Lightning for an instant, near-free transfer — or on-chain to the " +
+        "address below. The dollar figure holds at the rate when the coins arrive, so tell us once it's sent.");
+    }
+
+    // Primary action: the Strike referral, so a payer without a wallet lands on
+    // Strike (and the signup is credited). Falls back to the Lightning URI.
+    if (m.referral) {
+      link.href = m.referral;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.innerHTML = "Open Strike " +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
-        'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>');
-      link.parentElement.appendChild(btcToggle);
-      if (m.lightning) {
-        var panel = tile("bitcoin").querySelector('[data-panel="bitcoin"] dl');
-        var row = document.createElement("div");
-        row.className = "pay-row";
-        row.innerHTML = '<dt>Lightning</dt><dd data-copy>__LN__</dd>';
-        row.querySelector("dd").textContent = m.lightning;
-        panel.appendChild(row);
-        addCopy(row.querySelector("dd"));
-      }
-      addCopy(tile("bitcoin").querySelector('[data-fill="btc-address"]'));
+        'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>';
+    } else if (m.lightning) {
+      link.href = "lightning:" + m.lightning;
+      link.textContent = "Pay with Lightning";
     } else {
       var subject = "Lightning invoice request — " + (invoice ? "Invoice " + invoice : "BrilliantR");
       var body = "Please send a Lightning invoice for " + (amountText || "the amount due") +
@@ -218,6 +222,22 @@
       link.href = "mailto:" + (CFG.email || "rune@brilliantr.com") +
         "?subject=" + encodeURIComponent(subject) +
         "&body=" + encodeURIComponent(body);
+    }
+
+    if (m.lightning || m.address) {
+      // Without a toggle the addresses sit in a panel nobody can open.
+      var btcToggle = document.createElement("button");
+      btcToggle.type = "button";
+      btcToggle.className = "pay-link";
+      btcToggle.setAttribute("data-action", "toggle-details");
+      btcToggle.setAttribute("data-label-open", "Show addresses");
+      btcToggle.setAttribute("data-label-close", "Hide addresses");
+      btcToggle.setAttribute("aria-expanded", "false");
+      btcToggle.appendChild(document.createTextNode("Show addresses "));
+      btcToggle.insertAdjacentHTML("beforeend",
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+        'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>');
+      link.parentElement.appendChild(btcToggle);
     }
   })();
 
