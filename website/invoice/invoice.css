@@ -372,3 +372,34 @@
 .inv-details .pay-row--stack dd {
   font-size: 0.82rem;
 }
+
+/* ——— Tile arrangement ———
+   ACH runs down the left, Venmo / PayPal / Wise stack beside it, Bitcoin
+   spans the full width underneath. Below 620px everything falls back to a
+   single column in DOM order (Venmo, PayPal, Wise, ACH, Bitcoin). */
+@media (min-width: 621px) {
+  .inv-pay .pay-tile--r1,
+  .inv-pay .pay-tile--r2,
+  .inv-pay .pay-tile--r3 {
+    grid-column: 2;
+  }
+
+  .inv-pay .pay-tile--r1 { grid-row: 1; }
+  .inv-pay .pay-tile--r2 { grid-row: 2; }
+  .inv-pay .pay-tile--r3 { grid-row: 3; }
+
+  .inv-pay .pay-tile--ach {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+  }
+
+  .inv-pay .pay-tile--wide {
+    grid-column: 1 / -1;
+    grid-row: 4;
+  }
+
+  /* ACH fills the three rows it spans, so its footer lines up with Wise. */
+  .inv-pay .pay-grid {
+    align-items: stretch;
+  }
+}
