@@ -12,6 +12,9 @@
   var sheet = document.getElementById("inv-sheet");
   var payBlock = document.getElementById("inv-pay");
 
+  var CUT_OFF = "This link is incomplete — part of it was cut off in transit. " +
+    "Open the full link from the email, or reply and we’ll resend it.";
+
   function fail(message) {
     state.textContent = message;
     state.classList.add("is-error");
@@ -22,6 +25,12 @@
 
   function b64uToBytes(text) {
     var s = text.replace(/-/g, "+").replace(/_/g, "/");
+    // A length of 4n+1 cannot be valid base64. Mail clients that glue the
+    // trailing text onto a link produce exactly that, and atob() would throw
+    // mid-boot, leaving the page stuck on "Opening invoice…".
+    if (!/^[A-Za-z0-9+/]+={0,2}$/.test(s) || s.length % 4 === 1) {
+      throw new Error("bad-base64");
+    }
     while (s.length % 4) s += "=";
     var bin = atob(s);
     var out = new Uint8Array(bin.length);
@@ -267,7 +276,17 @@
       return;
     }
 
-    var keyBytes = b64uToBytes(link.key);
+    var keyBytes;
+    try {
+      keyBytes = b64uToBytes(link.key);
+    } catch (e) {
+      fail(CUT_OFF);
+      return;
+    }
+    if (keyBytes.length !== 32) {
+      fail(CUT_OFF);
+      return;
+    }
 
     fetch("data/" + encodeURIComponent(link.id) + ".json.enc", { cache: "no-store" })
       .then(function (res) {
@@ -295,5 +314,9 @@
       });
   }
 
-  boot();
+  try {
+    boot();
+  } catch (e) {
+    fail("Couldn’t open this invoice. Check your connection and reload the page.");
+  }
 })();
