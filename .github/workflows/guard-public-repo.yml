@@ -17,9 +17,9 @@ jobs:
       - name: Invoice payloads must be ciphertext only
         run: |
           set -eu
-          stray=$(git ls-files 'website/i/data/*' | grep -v '\.enc$' || true)
+          stray=$(git ls-files 'website/invoice/data/*' | grep -v '\.enc$' || true)
           if [ -n "$stray" ]; then
-            echo "::error::Only .enc files may live in website/i/data — found: $stray"
+            echo "::error::Only .enc files may live in website/invoice/data — found: $stray"
             exit 1
           fi
           echo "i/data holds ciphertext only."
@@ -43,7 +43,7 @@ jobs:
         run: |
           set -eu
           missing=0
-          for f in $(git ls-files 'website/i/data/*.enc'); do
+          for f in $(git ls-files 'website/invoice/data/*.enc'); do
             size=$(wc -c < "$f")
             if [ "$size" -lt 200 ]; then
               echo "::error::$f is only ${size}B — regenerate it."

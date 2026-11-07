@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /pay/
-Disallow: /i/
+Disallow: /invoice/
 
 Sitemap: https://brilliantr.com/sitemap.xml
 LLMs: https://brilliantr.com/llms.txt
