@@ -316,3 +316,59 @@
     width: 100%;
   }
 }
+
+/* ——— Payment tiles: details inline rather than hidden behind a toggle ——— */
+.pay-mark--bank {
+  background: #8FA3B8;
+  color: #101820;
+}
+
+.inv-pay .pay-tile--wide {
+  grid-column: 1 / -1;
+}
+
+.inv-details {
+  margin: 0.15rem 0 0.25rem;
+}
+
+.inv-details dl {
+  margin: 0;
+}
+
+.inv-pay .pay-row {
+  border-bottom-color: rgba(255, 255, 255, 0.07);
+}
+
+.inv-pay .pay-row dt {
+  font-size: 0.76rem;
+}
+
+.inv-pay .pay-row dd {
+  font-size: 0.82rem;
+}
+
+.inv-ref-note {
+  margin: 0;
+  font-size: 0.76rem;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.pay-link--hint {
+  font-size: 0.78rem;
+  color: var(--muted);
+  opacity: 0.9;
+}
+
+.pay-link--hint:hover {
+  color: var(--primary);
+}
+
+/* Stacked rows inside a narrow tile: value left, Copy pinned to the row. */
+.inv-details .pay-row--stack {
+  padding: 0.4rem 0;
+}
+
+.inv-details .pay-row--stack dd {
+  font-size: 0.82rem;
+}

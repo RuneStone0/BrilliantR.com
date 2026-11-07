@@ -166,8 +166,9 @@
     return btn;
   }
 
-  function tile(mark, markClass, title, sub, foot) {
-    var card = el("article", "pay-tile");
+  function tile(mark, markClass, title, sub, opts) {
+    opts = opts || {};
+    var card = el("article", "pay-tile" + (opts.wide ? " pay-tile--wide" : ""));
     var head = el("div", "pay-tile-head");
     head.appendChild(el("span", "pay-mark " + markClass, mark));
     var box = document.createElement("div");
@@ -175,10 +176,42 @@
     box.appendChild(el("p", "pay-tile-sub", sub));
     head.appendChild(box);
     card.appendChild(head);
+    if (opts.body) card.appendChild(opts.body);
     var footEl = el("div", "pay-tile-foot");
-    if (foot) footEl.appendChild(foot);
+    if (opts.foot) footEl.appendChild(opts.foot);
     card.appendChild(footEl);
     return card;
+  }
+
+  /* A labelled value with its own Copy button, laid out like the pay page. */
+  function detailRow(label, value, stacked) {
+    var row = el("div", "pay-row" + (stacked ? " pay-row--stack" : ""));
+    row.appendChild(el("dt", null, label));
+    var dd = el("dd", null, value);
+    row.appendChild(dd);
+    var copy = el("button", "pay-copy", "Copy");
+    copy.type = "button";
+    copy.addEventListener("click", function () {
+      var done = function () {
+        copy.textContent = "Copied";
+        copy.classList.add("is-done");
+        setTimeout(function () {
+          copy.textContent = "Copy";
+          copy.classList.remove("is-done");
+        }, 1600);
+      };
+      if (navigator.clipboard) navigator.clipboard.writeText(value).then(done, function () {});
+    });
+    row.appendChild(copy);
+    return row;
+  }
+
+  function detailBody(rows) {
+    var wrap = el("div", "pay-tile-body inv-details");
+    var dl = document.createElement("dl");
+    rows.forEach(function (r) { dl.appendChild(detailRow(r[0], r[1], r[2])); });
+    wrap.appendChild(dl);
+    return wrap;
   }
 
   function link(label, href, external) {
@@ -203,29 +236,65 @@
     document.getElementById("pay-amount").textContent = money(ctx.total, ctx.currency);
 
     var amount = Number(ctx.total).toFixed(2);
+    var refNote = el("p", "inv-ref-note", "Reference: " + ctx.ref);
 
     if (cfg.venmo && cfg.venmo.enabled) {
       var v = "https://venmo.com/u/" + encodeURIComponent(cfg.venmo.handle) +
         "?txn=pay&amount=" + amount + "&note=" + encodeURIComponent(ctx.ref);
-      grid.appendChild(tile("V", "pay-mark--venmo", "Venmo", "@" + cfg.venmo.handle,
-        link("Open Venmo", v, true)));
+      grid.appendChild(tile("V", "pay-mark--venmo", "Venmo", "@" + cfg.venmo.handle, {
+        foot: link("Open Venmo", v, true)
+      }));
     }
 
     if (cfg.paypal && cfg.paypal.enabled && cfg.paypal.email) {
-      grid.appendChild(tile("P", "pay-mark--paypal", "PayPal", cfg.paypal.email,
-        copyButton("Copy email", cfg.paypal.email)));
+      grid.appendChild(tile("P", "pay-mark--paypal", "PayPal", cfg.paypal.email, {
+        foot: copyButton("Copy email", cfg.paypal.email)
+      }));
+    }
+
+    if (cfg.wise && cfg.wise.enabled) {
+      var w = cfg.wise;
+      var rows = [];
+      if (w.accountName) rows.push(["Account name", w.accountName, true]);
+      if (w.routing) rows.push(["Routing (ABA)", w.routing, true]);
+      if (w.account) rows.push(["Account number", w.account, true]);
+      if (w.bank) rows.push(["Bank", w.bank, true]);
+      if (w.accountType) rows.push(["Account type", w.accountType, true]);
+      grid.appendChild(tile("B", "pay-mark--bank", "ACH / wire",
+        "Direct from your bank — no fees", {
+          body: rows.length ? detailBody(rows) : null,
+          foot: refNote
+        }));
     }
 
     if (cfg.wise && cfg.wise.enabled && cfg.wise.url) {
-      grid.appendChild(tile("W", "pay-mark--wise", "Bank transfer", "Wise · ACH or wire",
-        link("Open Wise", cfg.wise.url, true)));
+      var wiseBody = el("p", "pay-tile-body",
+        "Wise takes cards and bank transfers and handles the currency for you — " +
+        "useful if your bank isn’t set up for USD wires.");
+      grid.appendChild(tile("W", "pay-mark--wise", "Wise",
+        "Card, Apple Pay, or bank via Wise", {
+          body: wiseBody,
+          foot: link("Open Wise", cfg.wise.url, true)
+        }));
     }
 
     if (cfg.bitcoin && cfg.bitcoin.enabled) {
-      var btcHref = cfg.bitcoin.referral || (cfg.bitcoin.lightning ? "lightning:" + cfg.bitcoin.lightning : "");
+      var b = cfg.bitcoin;
+      var btcRows = [];
+      if (b.lightning) btcRows.push(["Lightning", b.lightning, true]);
+      if (b.address) btcRows.push(["On-chain", b.address, true]);
+      var btcFoot = el("div");
+      if (b.referral) {
+        var hint = link("No wallet yet? Strike", b.referral, true);
+        hint.className = "pay-link pay-link--hint";
+        btcFoot.appendChild(hint);
+      }
       grid.appendChild(tile("₿", "pay-mark--bitcoin", "Bitcoin",
-        cfg.bitcoin.lightning || "On-chain",
-        btcHref ? link("Open Strike", btcHref, cfg.bitcoin.referral ? true : false) : null));
+        b.lightning ? "Lightning (instant) or on-chain" : "On-chain", {
+          wide: true,
+          body: btcRows.length ? detailBody(btcRows) : null,
+          foot: btcFoot.childNodes.length ? btcFoot : null
+        }));
     }
 
     var full = document.getElementById("pay-full");
