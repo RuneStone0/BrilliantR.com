@@ -18,11 +18,18 @@ window.BR_PAY = {
 
     paypal: {
       enabled: true,
-      // PayPal personal "scan to receive" link (from the PayPal app QR code).
-      // Unlike paypal.me it does not accept an amount in the URL, so the payer
-      // types the figure shown at the top of the page.
+      // The account is only reachable by email — PayPal offers no paypal.me
+      // handle here. The tile therefore leads with the address and tells the
+      // payer what to enter.
+      //
+      // PARKED: the app's p2p scan-to-receive link
+      // (paypal.com/qrcodes/p2pqrc/4MAJZDC8TLD5G) takes no amount and could not
+      // be fetched from here to confirm it resolves to rtk@rtk-cv.dk — PayPal
+      // sits behind DataDome and 403s every non-browser request. Restore it in
+      // `url` only once someone has opened it and seen this account named.
+      email: "rtk@rtk-cv.dk",
       handle: "",
-      url: "https://www.paypal.com/qrcodes/p2pqrc/4MAJZDC8TLD5G"
+      url: ""
     },
 
     wise: {
