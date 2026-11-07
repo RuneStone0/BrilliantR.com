@@ -1,5 +1,6 @@
 /* BrilliantR /pay — hydrates the payment tiles from pay-details.js and the
- * invoice parameters on the link (?amt=..&inv=..&memo=..).
+ * invoice parameters on the link (?amt=..&inv=..). The payment reference
+ * is derived from the invoice number, so no third parameter is needed.
  *
  * The QR on each invoice encodes this page with the amount and invoice number,
  * so the payer never types a figure. Everything degrades to plain links.
@@ -20,7 +21,6 @@
 
   var amount = parseAmount(params.get("amt"));
   var invoice = (params.get("inv") || "").trim();
-  var memo = (params.get("memo") || "").trim();
 
   var currency = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -30,12 +30,13 @@
   var amountText = amount ? currency.format(amount) : "";
   var amountParam = amount ? amount.toFixed(2) : "";
 
-  /* A single human-readable reference reused in every note/memo field. */
+  /* The payment reference is derived from the invoice number alone, so a link
+     only ever carries ?amt and ?inv. Numeric invoices are zero-padded to three
+     digits, matching how they are written on the PDF. */
   function reference() {
-    var bits = [];
-    if (invoice) bits.push("Invoice " + invoice);
-    if (memo) bits.push(memo);
-    return bits.join(" — ") || "BrilliantR payment";
+    if (!invoice) return "BrilliantR payment";
+    var num = /^\d+$/.test(invoice) ? ("000" + invoice).slice(-3) : invoice;
+    return "brilliantr-invoice-" + num;
   }
 
   (function renderSummary() {
@@ -43,7 +44,7 @@
     var wrap = document.getElementById("pay-summary");
     var amtEl = document.getElementById("pay-amount");
     var invEl = document.getElementById("pay-inv-line");
-    var memoEl = document.getElementById("pay-memo-line");
+    var refEl = document.getElementById("pay-ref-line");
 
     if (amount) {
       amtEl.textContent = amountText;
@@ -53,10 +54,12 @@
       invEl.hidden = true;
     }
     if (amount && !invoice) invEl.hidden = true;
-    if (invoice) invEl.textContent = "Invoice " + invoice;
-    if (memo) {
-      memoEl.textContent = memo;
-      memoEl.hidden = false;
+    if (invoice) {
+      invEl.textContent = "Invoice " + invoice;
+      if (refEl) {
+        refEl.textContent = "Ref " + reference();
+        refEl.hidden = false;
+      }
     }
     wrap.hidden = false;
 
@@ -138,8 +141,7 @@
       }
       if (amountText) {
         body.textContent = "Send " + amountText + " in PayPal" +
-          (m.email ? " to " + m.email : "") + ", with " +
-          (invoice ? "invoice " + invoice : "your invoice number") + " in the note.";
+          (m.email ? " to " + m.email : "") + ", with " + reference() + " in the note.";
       } else if (m.email) {
         body.textContent = "Send the invoice amount in PayPal to " + m.email + ".";
       }
