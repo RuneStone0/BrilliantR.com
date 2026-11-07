@@ -180,9 +180,22 @@
         "&message=" + encodeURIComponent(ref);
       link.href = uri;
       link.textContent = "Open in wallet";
-      fill("btc-body", "Send the invoice amount in BTC to the address below. The amount in dollars " +
-        "is fixed at the rate when the payment confirms.");
+      fill("btc-body", "Send the invoice amount in BTC to the address below. On-chain only — " +
+        "the dollar figure holds at the rate when the coins arrive, so tell us once it's sent.");
       fill("btc-address", m.address);
+      // Without a toggle the address sits in a panel nobody can open.
+      var btcToggle = document.createElement("button");
+      btcToggle.type = "button";
+      btcToggle.className = "pay-link";
+      btcToggle.setAttribute("data-action", "toggle-details");
+      btcToggle.setAttribute("data-label-open", "Show address");
+      btcToggle.setAttribute("data-label-close", "Hide address");
+      btcToggle.setAttribute("aria-expanded", "false");
+      btcToggle.appendChild(document.createTextNode("Show address "));
+      btcToggle.insertAdjacentHTML("beforeend",
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+        'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>');
+      link.parentElement.appendChild(btcToggle);
       if (m.lightning) {
         var panel = tile("bitcoin").querySelector('[data-panel="bitcoin"] dl');
         var row = document.createElement("div");
@@ -208,7 +221,10 @@
     var t = btn.closest(".pay-tile");
     t.classList.toggle("is-open", open);
     btn.setAttribute("aria-expanded", open ? "true" : "false");
-    btn.childNodes[0].textContent = open ? "Hide account details" : "Show account details";
+    var label = open
+      ? (btn.dataset.labelClose || "Hide details")
+      : (btn.dataset.labelOpen || "Show details");
+    btn.childNodes[0].textContent = label + " ";
   }
 
   document.querySelectorAll('[data-action="toggle-details"]').forEach(function (btn) {

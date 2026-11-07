@@ -40,8 +40,8 @@ window.BR_PAY = {
 
     bitcoin: {
       enabled: true,
-      // On-chain address; leave "" to offer a Lightning invoice by email instead.
-      address: "",
+      // On-chain receive address (bech32, P2WPKH — checksum verified).
+      address: "bc1qf7flehxkfmmdvk0gxaqmrnfqs0srpvncrrv77u",
       lightning: ""
     }
   }
