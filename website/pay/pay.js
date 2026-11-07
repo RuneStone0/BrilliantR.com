@@ -113,11 +113,13 @@
   /* ——— PayPal ——— */
   (function paypal() {
     var m = CFG.methods.paypal;
-    if (!methodActive("paypal") || (!m.url && !m.handle)) {
+    if (!methodActive("paypal") || (!m.url && !m.handle && !m.email)) {
       return placeholder("paypal", "PayPal is not connected to this page yet.");
     }
     var t = tile("paypal");
     var link = t.querySelector('[data-action="external"]');
+    var body = t.querySelector(".pay-tile-body");
+    var panel = t.querySelector('[data-panel="paypal"] dl');
 
     if (m.handle) {
       // paypal.me/<handle> accepts the amount in the path.
@@ -126,14 +128,49 @@
       link.href = amountParam ? base + "/" + amountParam + "USD" : base;
       fill("paypal-handle", "paypal.me/" + m.handle);
     } else {
-      // QR p2p link: no amount parameter, so tell the payer to type it.
-      link.href = m.url;
-      link.childNodes[0].textContent = "Open PayPal ";
-      var body = t.querySelector(".pay-tile-body");
-      if (amountText) {
-        body.textContent = "Enter " + amountText + " in PayPal and put " +
-          (invoice ? "invoice " + invoice : "your invoice number") + " in the note.";
+      // No paypal.me handle: the account is reached by email, and the app's
+      // scan-to-receive link carries no amount, so the payer types the figure.
+      if (m.url) {
+        link.href = m.url;
+        link.childNodes[0].textContent = "Open PayPal ";
+      } else {
+        link.remove();
       }
+      if (amountText) {
+        body.textContent = "Send " + amountText + " in PayPal" +
+          (m.email ? " to " + m.email : "") + ", with " +
+          (invoice ? "invoice " + invoice : "your invoice number") + " in the note.";
+      } else if (m.email) {
+        body.textContent = "Send the invoice amount in PayPal to " + m.email + ".";
+      }
+    }
+
+    if (m.email && panel) {
+      var row = document.createElement("div");
+      row.className = "pay-row";
+      var dt = document.createElement("dt");
+      dt.textContent = "PayPal email";
+      var dd = document.createElement("dd");
+      dd.textContent = m.email;
+      dd.setAttribute("data-copy", "");
+      row.appendChild(dt);
+      row.appendChild(dd);
+      panel.appendChild(row);
+      addCopy(dd);
+
+      // Every panel needs its own control or the content is unreachable.
+      var toggle = document.createElement("button");
+      toggle.type = "button";
+      toggle.className = "pay-link";
+      toggle.setAttribute("data-action", "toggle-details");
+      toggle.setAttribute("data-label-open", "Show email");
+      toggle.setAttribute("data-label-close", "Hide email");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.appendChild(document.createTextNode("Show email "));
+      toggle.insertAdjacentHTML("beforeend",
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+        'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>');
+      t.querySelector(".pay-tile-foot").appendChild(toggle);
     }
   })();
 
@@ -261,7 +298,7 @@
   /* Deep links like /pay/#bank open the matching panel (used from emails). */
   (function openFromHash() {
     var want = (window.location.hash || "").replace("#", "");
-    var map = { bank: "wise", wise: "wise", bitcoin: "bitcoin", btc: "bitcoin" };
+    var map = { bank: "wise", wise: "wise", bitcoin: "bitcoin", btc: "bitcoin", paypal: "paypal" };
     var target = map[want];
     if (!target) return;
     var t = tile(target);
