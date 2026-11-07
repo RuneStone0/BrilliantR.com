@@ -168,7 +168,8 @@
 
   function tile(mark, markClass, title, sub, opts) {
     opts = opts || {};
-    var card = el("article", "pay-tile" + (opts.wide ? " pay-tile--wide" : ""));
+    var extra = opts.cls ? " " + opts.cls : "";
+    var card = el("article", "pay-tile" + extra + (opts.wide ? " pay-tile--wide" : ""));
     var head = el("div", "pay-tile-head");
     head.appendChild(el("span", "pay-mark " + markClass, mark));
     var box = document.createElement("div");
@@ -242,12 +243,14 @@
       var v = "https://venmo.com/u/" + encodeURIComponent(cfg.venmo.handle) +
         "?txn=pay&amount=" + amount + "&note=" + encodeURIComponent(ctx.ref);
       grid.appendChild(tile("V", "pay-mark--venmo", "Venmo", "@" + cfg.venmo.handle, {
+        cls: "pay-tile--r1",
         foot: link("Open Venmo", v, true)
       }));
     }
 
     if (cfg.paypal && cfg.paypal.enabled && cfg.paypal.email) {
       grid.appendChild(tile("P", "pay-mark--paypal", "PayPal", cfg.paypal.email, {
+        cls: "pay-tile--r2",
         foot: copyButton("Copy email", cfg.paypal.email)
       }));
     }
@@ -262,6 +265,7 @@
       if (w.accountType) rows.push(["Account type", w.accountType, true]);
       grid.appendChild(tile("B", "pay-mark--bank", "ACH / wire",
         "Direct from your bank — no fees", {
+          cls: "pay-tile--ach",
           body: rows.length ? detailBody(rows) : null,
           foot: refNote
         }));
@@ -273,6 +277,7 @@
         "useful if your bank isn’t set up for USD wires.");
       grid.appendChild(tile("W", "pay-mark--wise", "Wise",
         "Card, Apple Pay, or bank via Wise", {
+          cls: "pay-tile--r3",
           body: wiseBody,
           foot: link("Open Wise", cfg.wise.url, true)
         }));
