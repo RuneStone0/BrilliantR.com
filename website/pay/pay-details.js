@@ -27,15 +27,16 @@ window.BR_PAY = {
 
     wise: {
       enabled: true,
+      // Wise "pay me" link — payer can pay by card/bank without knowing the
+      // account numbers. The ACH details below stay visible for bookkeepers.
+      url: "https://wise.com/pay/me/runek14",
       // Wise USD account details (Community Federal Savings Bank). These are
       // what the invoice used to print as "ACH bank transfer".
       accountName: "Rune Thougaard Kristensen",
       accountType: "Checking",
       routing: "026073150",
       account: "8310098788",
-      bank: "Community Federal Savings Bank",
-      // Optional fixed Wise payment link; leave "" to rely on the details above.
-      url: ""
+      bank: "Community Federal Savings Bank"
     },
 
     bitcoin: {

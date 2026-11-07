@@ -154,15 +154,20 @@
     }
 
     if (m.url) {
-      var foot = tile("wise").querySelector(".pay-tile-foot");
+      // Keep the ACH details available: the Wise link is the fast path, the
+      // copyable routing/account numbers are what a bookkeeper asks for.
+      var t = tile("wise");
+      var foot = t.querySelector(".pay-tile-foot");
       var b = foot.querySelector('[data-action="toggle-details"]');
       var a = document.createElement("a");
       a.className = "pay-link";
       a.href = m.url;
       a.target = "_blank";
       a.rel = "noopener noreferrer";
-      a.textContent = "Open Wise";
-      if (b) b.replaceWith(a);
+      a.innerHTML = "Open Wise " +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+        'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>';
+      if (b) foot.insertBefore(a, b);
     }
   })();
 
