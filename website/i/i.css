@@ -144,6 +144,7 @@
   text-align: right;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
+  padding-left: 0.75rem;
 }
 
 .inv-items th.inv-num {
