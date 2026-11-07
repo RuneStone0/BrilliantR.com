@@ -352,8 +352,7 @@
   (function pageQr() {
     var box = document.getElementById("pay-qr");
     var canvas = document.getElementById("pay-qr-canvas");
-    var btn = document.getElementById("pay-qr-copy");
-    if (!box || !canvas || !btn || typeof qrcode !== "function") return;
+    if (!box || !canvas || typeof qrcode !== "function") return;
 
     // Exactly this page, including the amount and invoice number, minus any hash.
     var url = window.location.href.split("#")[0];
@@ -362,16 +361,16 @@
     qr.make();
 
     var count = qr.getModuleCount();
-    var scale = 12; // ~490px source, enough for print when pasted into an invoice
+    var scale = 12; // ~490px source, sharp on retina and when screenshotted
     var quiet = 4;
     var size = (count + quiet * 2) * scale;
     canvas.width = size;
     canvas.height = size;
 
+    // Light on dark: the code lives on the page rather than on a white card.
     var ctx = canvas.getContext("2d");
-    ctx.fillStyle = "#FFFFFF";
-    ctx.fillRect(0, 0, size, size);
-    ctx.fillStyle = "#101820";
+    ctx.clearRect(0, 0, size, size);
+    ctx.fillStyle = "#E8EEF4";
     for (var r = 0; r < count; r++) {
       for (var c = 0; c < count; c++) {
         if (qr.isDark(r, c)) {
@@ -381,31 +380,6 @@
     }
 
     box.hidden = false;
-    btn.title = url;
-
-    function done() {
-      btn.textContent = "Copied";
-      btn.classList.add("is-done");
-      setTimeout(function () {
-        btn.textContent = "Copy QR";
-        btn.classList.remove("is-done");
-      }, 1800);
-    }
-
-    btn.addEventListener("click", function () {
-      var fallback = function () { btn.textContent = "Right-click to save"; };
-      if (!canvas.toBlob || !canvas.toBlob(function (blob) {
-        if (!blob) return fallback();
-        if (navigator.clipboard && window.ClipboardItem) {
-          navigator.clipboard.write([new ClipboardItem({ "image/png": blob })])
-            .then(done, fallback);
-        } else {
-          fallback();
-        }
-      }, "image/png")) {
-        fallback();
-      }
-    });
   })();
 
   /* ——— Small print ——— */
