@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BrilliantR invoice.">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#1C222D">
+  <title>Invoice — BrilliantR</title>
+  <link rel="icon" href="/images/favicon.svg?v=2" type="image/svg+xml">
+  <link rel="icon" href="/images/icon.png" type="image/png" sizes="32x32">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/pay/pay.css">
+  <link rel="stylesheet" href="i.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="logo" href="/">
+        <img src="/images/logo.png" alt="" width="32" height="32">
+        BrilliantR
+      </a>
+      <span class="pay-tag">Invoice</span>
+    </div>
+  </header>
+
+  <main id="main" class="inv-main">
+    <div class="container">
+
+      <p class="inv-state" id="inv-state" role="status">Opening invoice…</p>
+
+      <article class="inv-sheet" id="inv-sheet" hidden>
+        <header class="inv-head">
+          <div class="inv-brand">
+            <span class="inv-brand-name">BrilliantR</span>
+            <span class="inv-brand-tag">AI &amp; IT consulting</span>
+          </div>
+          <div class="inv-meta">
+            <h1>Invoice <span id="inv-number"></span></h1>
+            <p>Issued <span id="inv-issued"></span></p>
+            <p>Due <strong id="inv-due"></strong></p>
+          </div>
+        </header>
+
+        <div class="inv-parties">
+          <section>
+            <h2>From</h2>
+            <p id="inv-from"></p>
+          </section>
+          <section>
+            <h2>Bill to</h2>
+            <p id="inv-to"></p>
+          </section>
+        </div>
+
+        <table class="inv-items">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Description</th>
+              <th scope="col" class="inv-num">Hrs</th>
+              <th scope="col" class="inv-num">Rate</th>
+              <th scope="col" class="inv-num">Amount</th>
+            </tr>
+          </thead>
+          <tbody id="inv-rows"></tbody>
+        </table>
+
+        <div class="inv-totals" id="inv-totals"></div>
+
+        <p class="inv-note" id="inv-note" hidden></p>
+
+        <footer class="inv-foot">
+          <button class="inv-pdf" id="inv-pdf" type="button">Download PDF</button>
+          <span class="inv-ref" id="inv-ref"></span>
+        </footer>
+      </article>
+
+      <section class="inv-pay" id="inv-pay" hidden>
+        <h2>Pay <span id="pay-amount"></span></h2>
+        <p class="inv-pay-note">Pick whichever is easiest — the amount and the invoice reference are already filled in.</p>
+        <div class="pay-grid" id="pay-grid"></div>
+        <p class="inv-pay-more">
+          <a class="pay-link" id="pay-full" href="/pay/">Open the full payment page
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <noscript>
+    <p class="container inv-noscript">
+      This invoice is encrypted and opens in your browser. Please enable JavaScript,
+      or reply to the email and we’ll send a PDF.
+    </p>
+  </noscript>
+
+  <script src="/pay/pay-details.js"></script>
+  <script src="i.js"></script>
+</body>
+</html>

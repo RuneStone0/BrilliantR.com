@@ -1,0 +1,58 @@
+name: Guard public repo
+
+# This repo is public and hosts client invoices (encrypted). These checks stop
+# the two ways that could go wrong: plaintext invoice data, or a client's
+# details pasted into a page.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  no-plaintext-invoices:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Invoice payloads must be ciphertext only
+        run: |
+          set -eu
+          stray=$(git ls-files 'website/i/data/*' | grep -v '\.enc$' || true)
+          if [ -n "$stray" ]; then
+            echo "::error::Only .enc files may live in website/i/data — found: $stray"
+            exit 1
+          fi
+          echo "i/data holds ciphertext only."
+
+      - name: No unexpected email addresses
+        run: |
+          set -eu
+          # BrilliantR's own addresses are expected; anything else means a
+          # client's details have been pasted into a public file.
+          allowed='^(rune@brilliantr\.com|hello@brilliantr\.com|rtk@rtk-cv\.dk|runestone@strike\.me)$'
+          found=$(git grep -IhoE '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}' -- . \
+            | sort -u | grep -vE "$allowed" || true)
+          if [ -n "$found" ]; then
+            echo "::error::Unexpected email address(es) in a public file:"
+            echo "$found"
+            exit 1
+          fi
+          echo "No unexpected addresses."
+
+      - name: Ciphertext looks encrypted, not empty
+        run: |
+          set -eu
+          missing=0
+          for f in $(git ls-files 'website/i/data/*.enc'); do
+            size=$(wc -c < "$f")
+            if [ "$size" -lt 200 ]; then
+              echo "::error::$f is only ${size}B — regenerate it."
+              missing=1
+            fi
+            # A PDF that leaked through in plaintext would start with %PDF.
+            if head -c 4 "$f" | grep -q '%PDF'; then
+              echo "::error::$f is a plaintext PDF."
+              missing=1
+            fi
+          done
+          [ "$missing" -eq 0 ] && echo "Ciphertext looks sane."
