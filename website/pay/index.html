@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pay a BrilliantR invoice by Venmo, PayPal, bank transfer, or Bitcoin.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#1C222D">
+  <title>Pay BrilliantR</title>
+  <link rel="icon" href="/images/favicon.svg?v=2" type="image/svg+xml">
+  <link rel="icon" href="/images/icon.png" type="image/png" sizes="32x32">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="pay.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="logo" href="/">
+        <img src="/images/logo.png" alt="" width="32" height="32">
+        BrilliantR
+      </a>
+      <span class="pay-tag">Payment</span>
+    </div>
+  </header>
+
+  <main id="main" class="pay-main">
+    <div class="container">
+      <p class="pay-eyebrow">Invoice payment</p>
+      <h1>Pay BrilliantR</h1>
+      <p class="lead">Pick whichever method is easiest for you. Every option lands in the same place — no account setup, no forms.</p>
+
+      <div class="pay-summary" id="pay-summary" hidden>
+        <div>
+          <span class="pay-summary-label">Amount due</span>
+          <span class="pay-summary-amount" id="pay-amount">—</span>
+        </div>
+        <div class="pay-summary-meta">
+          <span id="pay-inv-line"></span>
+          <span id="pay-memo-line" hidden></span>
+        </div>
+      </div>
+
+      <div class="pay-grid" id="pay-grid">
+
+        <article class="pay-tile" data-method="venmo">
+          <div class="pay-tile-head">
+            <span class="pay-mark pay-mark--venmo" aria-hidden="true">V</span>
+            <div>
+              <h2>Venmo</h2>
+              <p class="pay-tile-sub">Fastest if you already use Venmo</p>
+            </div>
+          </div>
+          <p class="pay-tile-body">Pays from your Venmo balance or linked bank account. Opens the Venmo app on mobile, venmo.com on desktop.</p>
+          <div class="pay-tile-foot">
+            <a class="pay-link" data-action="external" href="#">
+              Open in Venmo
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+            <span class="pay-handle" data-fill="venmo-handle"></span>
+          </div>
+        </article>
+
+        <article class="pay-tile" data-method="paypal">
+          <div class="pay-tile-head">
+            <span class="pay-mark pay-mark--paypal" aria-hidden="true">P</span>
+            <div>
+              <h2>PayPal</h2>
+              <p class="pay-tile-sub">Card, balance, or bank — no PayPal account needed</p>
+            </div>
+          </div>
+          <p class="pay-tile-body">Works with a credit or debit card even without a PayPal login. Good option for international payments.</p>
+          <div class="pay-tile-foot">
+            <a class="pay-link" data-action="external" href="#">
+              Pay with PayPal
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+            <span class="pay-handle" data-fill="paypal-handle"></span>
+          </div>
+        </article>
+
+        <article class="pay-tile" data-method="wise">
+          <div class="pay-tile-head">
+            <span class="pay-mark pay-mark--wise" aria-hidden="true">W</span>
+            <div>
+              <h2>Bank transfer</h2>
+              <p class="pay-tile-sub">Wise USD account · ACH or wire from your bank</p>
+            </div>
+          </div>
+          <p class="pay-tile-body">Send a standard ACH or wire transfer from your bank. Copy the details straight into your bank's payment screen.</p>
+          <div class="pay-tile-foot">
+            <button class="pay-link" type="button" data-action="toggle-details" aria-expanded="false">
+              Show account details
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+          </div>
+          <div class="pay-details" data-panel="wise">
+            <dl>
+              <div class="pay-row"><dt>Account name</dt><dd class="is-name" data-fill="wise-name" data-copy></dd></div>
+              <div class="pay-row"><dt>Routing (ABA)</dt><dd data-fill="wise-routing" data-copy></dd></div>
+              <div class="pay-row"><dt>Account number</dt><dd data-fill="wise-account" data-copy></dd></div>
+              <div class="pay-row"><dt>Account type</dt><dd class="is-name" data-fill="wise-type"></dd></div>
+              <div class="pay-row"><dt>Bank</dt><dd class="is-name" data-fill="wise-bank"></dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="pay-tile" data-method="bitcoin">
+          <div class="pay-tile-head">
+            <span class="pay-mark pay-mark--bitcoin" aria-hidden="true">₿</span>
+            <div>
+              <h2>Bitcoin</h2>
+              <p class="pay-tile-sub">On-chain or Lightning</p>
+            </div>
+          </div>
+          <p class="pay-tile-body" data-fill="btc-body">Send the invoice amount in BTC. Ask for a Lightning invoice and one is issued for the exact amount at the current rate.</p>
+          <div class="pay-tile-foot">
+            <a class="pay-link" data-action="btc" href="#">Request Lightning invoice</a>
+          </div>
+          <div class="pay-details" data-panel="bitcoin">
+            <dl>
+              <div class="pay-row"><dt>Address</dt><dd data-fill="btc-address" data-copy></dd></div>
+            </dl>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="pay-help">
+        Once you've paid, reply to your invoice email and we'll confirm receipt within one business day.
+        Questions about an amount? <a href="mailto:rune@brilliantr.com" id="pay-mail">rune@brilliantr.com</a>
+      </p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col footer-brand-col">
+          <span class="footer-brand">
+            <img src="/images/logo.png" alt="" width="24" height="24">
+            BrilliantR
+          </span>
+          <p class="footer-tagline">AI &amp; IT consulting for small businesses without an in-house IT department.</p>
+        </div>
+        <nav class="footer-col footer-nav" aria-label="Footer">
+          <a href="/">Home</a>
+          <a href="/#services">Services</a>
+          <a href="/#pricing">Pricing</a>
+          <a href="mailto:rune@brilliantr.com">Contact</a>
+        </nav>
+        <div class="footer-col footer-contact">
+          <a href="mailto:rune@brilliantr.com">rune@brilliantr.com</a>
+          <a href="https://www.linkedin.com/in/runetk-dk/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+      <p class="footer-meta">Lehi, Utah · <span id="year"></span></p>
+    </div>
+  </footer>
+
+  <noscript>
+    <p style="max-width: 40rem; margin: 0 auto; padding: 1rem 1.25rem; color: #C8D0DA;">
+      This page needs JavaScript to show the payment options. Email
+      <a href="mailto:rune@brilliantr.com">rune@brilliantr.com</a> and we'll send details directly.
+    </p>
+  </noscript>
+
+  <script src="pay-details.js"></script>
+  <script src="pay.js"></script>
+</body>
+</html>
