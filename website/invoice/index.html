@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" href="/pay/pay.css">
-  <link rel="stylesheet" href="i.css">
+  <link rel="stylesheet" href="invoice.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -41,11 +41,7 @@
             <span class="inv-brand-name">BrilliantR</span>
             <span class="inv-brand-tag">AI &amp; IT consulting</span>
           </div>
-          <div class="inv-meta">
-            <h1>Invoice <span id="inv-number"></span></h1>
-            <p>Issued <span id="inv-issued"></span></p>
-            <p>Due <strong id="inv-due"></strong></p>
-          </div>
+          <h1 class="inv-title">Invoice</h1>
         </header>
 
         <div class="inv-parties">
@@ -56,6 +52,13 @@
           <section>
             <h2>Bill to</h2>
             <p id="inv-to"></p>
+          </section>
+          <section class="inv-meta">
+            <dl>
+              <dt>Number</dt><dd id="inv-number"></dd>
+              <dt>Issued</dt><dd id="inv-issued"></dd>
+              <dt>Due</dt><dd id="inv-due"></dd>
+            </dl>
           </section>
         </div>
 
@@ -103,6 +106,6 @@
   </noscript>
 
   <script src="/pay/pay-details.js"></script>
-  <script src="i.js"></script>
+  <script src="invoice.js"></script>
 </body>
 </html>

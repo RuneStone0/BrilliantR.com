@@ -64,25 +64,33 @@
   color: #5C6775;
 }
 
-.inv-meta {
+.inv-title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 0;
+  color: #1C222D;
+}
+
+.inv-meta dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 0.15rem 0.85rem;
+  font-size: 0.82rem;
+  color: #8892A0;
+}
+
+.inv-meta dt {
   text-align: right;
 }
 
-.inv-meta h1 {
-  font-size: 1.5rem;
-  line-height: 1.1;
-  margin: 0 0 0.45rem;
-  color: #1C222D;
-}
-
-.inv-meta p {
-  margin: 0.1rem 0;
-  font-size: 0.85rem;
-  color: #5C6775;
-}
-
-.inv-meta strong {
-  color: #1C222D;
+.inv-meta dd {
+  margin: 0;
+  text-align: right;
+  color: #35404F;
   font-weight: 500;
 }
 
@@ -91,9 +99,10 @@
   padding: 0;
 }
 
+/* From / Bill to / details, mirroring the PDF. */
 .inv-parties {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr auto;
   gap: 2rem;
   padding: 1.5rem 0;
 }
@@ -281,16 +290,21 @@
 
   .inv-head {
     flex-direction: column;
-    gap: 1rem;
-  }
-
-  .inv-meta {
-    text-align: left;
+    gap: 0.75rem;
   }
 
   .inv-parties {
     grid-template-columns: 1fr;
     gap: 1.25rem;
+  }
+
+  .inv-meta dl {
+    justify-content: start;
+  }
+
+  .inv-meta dt,
+  .inv-meta dd {
+    text-align: left;
   }
 
   .inv-items th:nth-child(3),

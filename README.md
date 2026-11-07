@@ -11,7 +11,7 @@ Public marketing website for BrilliantR. Built as a self-contained static site �
 ```
 website/
 ├── index.html   # Entire site — HTML, CSS, and JS in one file
-├── i/           # Encrypted invoice pages (ciphertext only) — unlisted, noindex
+├── invoice/      # Encrypted invoice pages (ciphertext only) — unlisted, noindex
 ├── pay/         # Invoice payment page (QR target) — unlisted, noindex
 ├── css/         # Stylesheets
 ├── images/      # Site images (logo, photo, icon)
@@ -19,8 +19,8 @@ website/
 └── logos/       # Brand assets
 ```
 
-`i/` is the invoice itself, published as ciphertext: the link carries the key in the
-fragment (`brilliantr.com/i/#002.<key>`), so the public repo never holds client data.
+`invoice/` is the invoice itself, published as ciphertext: the link carries the key in the
+fragment (`brilliantr.com/invoice/#002.<key>`), so the public repo never holds client data.
 See `../brilliantr/services/invoicing/publish.py`.
 
 `pay/` is reached only from the QR code on an invoice:
