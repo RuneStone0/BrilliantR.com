@@ -213,10 +213,10 @@
 }
 
 .pay-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 36%) 1fr auto;
   align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
+  gap: 0.35rem 0.75rem;
   padding: 0.35rem 0;
   font-size: 0.9rem;
   border-bottom: 1px dotted var(--border);
@@ -237,7 +237,7 @@
   color: var(--primary);
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.88rem;
-  text-align: right;
+  text-align: left;
   word-break: break-all;
 }
 
