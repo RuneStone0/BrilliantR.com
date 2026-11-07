@@ -30,8 +30,17 @@
 
   <main id="main" class="pay-main">
     <div class="container">
-      <p class="pay-eyebrow">Invoice payment</p>
-      <h1>Pay BrilliantR</h1>
+      <div class="pay-head">
+        <div class="pay-head-text">
+          <p class="pay-eyebrow">Invoice payment</p>
+          <h1>Pay BrilliantR</h1>
+        </div>
+        <div class="pay-qr" id="pay-qr" hidden>
+          <canvas id="pay-qr-canvas" width="320" height="320" aria-label="QR code for this payment page"></canvas>
+          <p class="pay-qr-label">Scan to pay on your phone</p>
+          <button class="pay-copy" type="button" id="pay-qr-copy">Copy QR</button>
+        </div>
+      </div>
       <p class="lead">Pick whichever method is easiest for you. Every option lands in the same place — no account setup, no forms.</p>
 
       <div class="pay-summary" id="pay-summary" hidden>
@@ -170,6 +179,7 @@
     </p>
   </noscript>
 
+  <script src="vendor/qrcode-generator.1.4.4.js"></script>
   <script src="pay-details.js"></script>
   <script src="pay.js"></script>
 </body>
