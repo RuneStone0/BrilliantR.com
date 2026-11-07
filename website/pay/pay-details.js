@@ -41,9 +41,14 @@ window.BR_PAY = {
 
     bitcoin: {
       enabled: true,
+      // Strike referral — the tile's primary action. Signups are credited to
+      // this link; a payer without a wallet lands straight on Strike.
+      referral: "https://invite.strike.me/FDQH2P",
+      // Lightning address (LUD-16). Verified live: LNURL-pay returns
+      // payRequest, min 1 sat, max 16,000,000 sats, comments allowed.
+      lightning: "runestone@strike.me",
       // On-chain receive address (bech32, P2WPKH — checksum verified).
-      address: "bc1qf7flehxkfmmdvk0gxaqmrnfqs0srpvncrrv77u",
-      lightning: ""
+      address: "bc1qf7flehxkfmmdvk0gxaqmrnfqs0srpvncrrv77u"
     }
   }
 };

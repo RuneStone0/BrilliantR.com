@@ -296,6 +296,15 @@
   margin-left: 0;
 }
 
+/* Opened panel flips its chevron so the control reads as "close". */
+.pay-tile.is-open [data-action="toggle-details"] svg {
+  transform: rotate(180deg);
+}
+
+.pay-tile [data-action="toggle-details"] svg {
+  transition: transform 0.15s ease;
+}
+
 /* Placeholder state, only reachable with ?preview=1 */
 .pay-tile.is-placeholder {
   opacity: 0.55;
