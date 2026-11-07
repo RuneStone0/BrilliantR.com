@@ -268,6 +268,34 @@
   color: var(--accent);
 }
 
+/* Long values (crypto addresses) need the full tile width, not a right rail. */
+.pay-row--stack {
+  display: block;
+  padding: 0.55rem 0;
+}
+
+.pay-row--stack dt {
+  margin-bottom: 0.2rem;
+}
+
+.pay-row--stack dd {
+  text-align: left;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+/* Keep the Copy button on the label line, out of the address's way. */
+.pay-row--stack {
+  position: relative;
+}
+
+.pay-row--stack .pay-copy {
+  position: absolute;
+  top: 0.4rem;
+  right: 0;
+  margin-left: 0;
+}
+
 /* Placeholder state, only reachable with ?preview=1 */
 .pay-tile.is-placeholder {
   opacity: 0.55;
