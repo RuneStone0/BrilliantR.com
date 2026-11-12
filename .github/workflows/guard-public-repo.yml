@@ -14,15 +14,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Invoice payloads must be ciphertext only
+      - name: Client payloads must be ciphertext only
         run: |
           set -eu
-          stray=$(git ls-files 'website/invoice/data/*' | grep -v '\.enc$' || true)
-          if [ -n "$stray" ]; then
-            echo "::error::Only .enc files may live in website/invoice/data — found: $stray"
-            exit 1
-          fi
-          echo "i/data holds ciphertext only."
+          for dir in website/invoice/data website/offer/data; do
+            [ -d "$dir" ] || continue
+            stray=$(git ls-files "$dir/*" | grep -v '\.enc$' || true)
+            if [ -n "$stray" ]; then
+              echo "::error::Only .enc files may live in $dir, found: $stray"
+              exit 1
+            fi
+            echo "$dir holds ciphertext only."
+          done
 
       - name: No unexpected email addresses
         run: |
@@ -43,15 +46,20 @@ jobs:
         run: |
           set -eu
           missing=0
-          for f in $(git ls-files 'website/invoice/data/*.enc'); do
+          for f in $(git ls-files 'website/invoice/data/*.enc' 'website/offer/data/*.enc'); do
             size=$(wc -c < "$f")
             if [ "$size" -lt 200 ]; then
-              echo "::error::$f is only ${size}B — regenerate it."
+              echo "::error::$f is only ${size}B, regenerate it."
               missing=1
             fi
             # A PDF that leaked through in plaintext would start with %PDF.
             if head -c 4 "$f" | grep -q '%PDF'; then
               echo "::error::$f is a plaintext PDF."
+              missing=1
+            fi
+            # An HTML document that leaked through in plaintext would mention a doctype.
+            if grep -aq -m1 '<!DOCTYPE\|<html' "$f"; then
+              echo "::error::$f contains plaintext HTML."
               missing=1
             fi
           done

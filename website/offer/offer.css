@@ -1,0 +1,68 @@
+/* BrilliantR, encrypted offer page shell.
+ * The document itself is decrypted in the browser and rendered inside the
+ * iframe, so the shell only has to stay out of the way and carry the states.
+ */
+:root {
+  --paper: #fcfbf8;
+  --ink: #1e1c17;
+  --muted: #6a6459;
+  --rule: #e6e1d6;
+  color-scheme: light;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1c222d;
+    --ink: #e8eef4;
+    --muted: #8b95a5;
+    --rule: #3a4454;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.unlock {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+}
+.unlock-inner {
+  max-width: 460px;
+  text-align: center;
+}
+.unlock-inner img { display: block; margin: 0 auto 18px; opacity: .9; }
+.unlock-inner p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.unlock-inner p.strong { color: var(--ink); font-weight: 600; margin-bottom: 8px; font-size: 16px; }
+.unlock-inner .hint { margin-top: 14px; font-size: 13.5px; }
+.unlock-inner a { color: inherit; }
+
+#doc {
+  display: block;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: var(--paper);
+}
+#doc[hidden] { display: none; }
+
+@media print {
+  #doc { position: static; height: 100vh; }
+  .unlock { display: none; }
+}
