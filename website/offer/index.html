@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BrilliantR proposal.">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#1C222D">
+  <title>Proposal, BrilliantR</title>
+  <link rel="icon" href="/images/favicon.svg?v=2" type="image/svg+xml">
+  <link rel="icon" href="/images/icon.png" type="image/png" sizes="32x32">
+  <link rel="stylesheet" href="offer.css">
+</head>
+<body>
+  <div class="unlock" id="unlock" role="status">
+    <div class="unlock-inner">
+      <img src="/images/logo.png" alt="" width="30" height="30">
+      <p class="strong" id="msg-title">Opening the proposal</p>
+      <p id="msg">Decrypting in your browser. Nothing was fetched in the clear.</p>
+    </div>
+  </div>
+
+  <iframe id="doc" title="Encrypted proposal document" hidden
+    sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-downloads allow-top-navigation-by-user-activation"></iframe>
+
+  <noscript>
+    <div class="unlock">
+      <div class="unlock-inner">
+        <p class="strong">This proposal is encrypted</p>
+        <p>It opens in your browser and needs JavaScript. Enable it, or reply to the email and we will send a PDF.</p>
+      </div>
+    </div>
+  </noscript>
+
+  <script src="offer.js"></script>
+</body>
+</html>
