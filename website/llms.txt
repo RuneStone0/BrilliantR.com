@@ -33,7 +33,8 @@ All solutions are built with security by design — no exposed credentials, no l
 | Option | Rate | Notes |
 |---|---|---|
 | Introductory hourly | $120/hr | First 10 hours with any new client. No minimum commitment. |
-| Monthly retainer | $1,000/month | 10 hrs/month at $100/hr. 3-month minimum. Unused hours roll over one month. |
+| Monthly retainer (10 hrs) | $1,200/month | 10 hrs/month at $120/hr. 3-month minimum. Unused hours roll over one month. |
+| Monthly retainer (20 hrs) | $2,200/month | 20 hrs/month at $110/hr. Same terms as the 10-hour retainer. |
 | Standard hourly | $150/hr | No commitment. Billed in full-hour increments. |
 | IT and AI Health Check | $1,500 flat | Fixed-price audit. |
 | AI Automation (ROI sharing) | 50% of annual saving | Paid upfront. Min $5,000 annual saving. |
