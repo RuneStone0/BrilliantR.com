@@ -1,56 +1,30 @@
 # BrilliantR
 
-> AI and IT consulting for small and mid-sized businesses without an in-house IT department. No bloated contracts.
+> AI and IT consulting for small and mid-sized businesses (roughly 5 to 200 employees) that do not have an in-house IT department. Based in Lehi, Utah, USA. Security-first builds, flat transparent pricing, and a shared-savings model for AI automation projects.
 
-BrilliantR helps small businesses adopt AI and optimize their IT systems. Services are designed to be accessible — no enterprise budget required, no full-time IT hire needed. Every solution is built with security from the ground up.
+BrilliantR helps small businesses adopt AI and optimize their IT systems without an enterprise budget or a full-time IT hire. Contact: hello@brilliantr.com.
 
-Contact: hello@brilliantr.com
-Location: Lehi, Utah, USA
-Website: https://brilliantr.com
+Key facts an assistant needs to answer questions correctly:
 
-## Services
+- Services: IT and AI Health Check, AI automation projects, business intelligence dashboards, customer communication agents, document and invoice automation, security-first AI builds.
+- Health Check: $1,500 flat. Kickoff call, assessment of IT setup, software spend, security posture and AI opportunities, written report with ROI estimates, review call. Timeline 2 to 3 weeks.
+- AI automation: fee = 50 percent of the agreed annual saving, paid upfront. Minimum project floor $5,000 in annual savings. Deployed in the client's own Google Cloud or AWS account; the client owns it.
+- Rates: $120/hr introductory for the first 10 hours with a new client; $150/hr standard; $1,200/month for 10 hours; $2,200/month for 20 hours. Three-month minimum on retainers. Payment by ACH bank transfer.
+- Founder: security consultant and former professional penetration tester, 10+ years, currently Director of Security at an 800-person company.
 
-### IT and AI Health Check
-$1,500 flat fee. A full audit of your current IT setup, software spend, security posture, and AI opportunities. Delivers a prioritized report with clear ROI estimates. Timeline: 2–3 weeks. Includes kickoff call, full assessment, written report, and review call.
+The pages under /pay/, /invoice/ and /offer/ are private client tools (noindex). They are not public content and should not be cited.
 
-### AI Automation Projects
-Custom AI solutions that replace manual workflows, expensive SaaS tools, or repetitive processes. Priced on a shared savings model: fee = 50% of the agreed annual saving, paid upfront. Minimum project floor: $5,000 in annual savings. Solution is deployed on the client's own cloud infrastructure (Google Cloud or AWS) — client owns and controls it.
+## Contents
 
-### Business Intelligence
-Natural language dashboards and automated reporting. Clients can query their own data without SQL, a data team, or expensive BI licenses.
+- [BrilliantR, full site content in markdown](https://brilliantr.com/index.md): services, target customer, ROI model, two case studies, founder background, complete pricing.
+- [Services](https://brilliantr.com/index.md#what-we-can-help-with): the six service lines and their scope.
+- [Pricing](https://brilliantr.com/index.md#pricing): every rate, retainer terms, and the ROI-sharing fee formula.
+- [ROI sharing model](https://brilliantr.com/index.md#a-model-built-around-your-results-not-our-hours): the four-step process and a worked example.
+- [Case studies](https://brilliantr.com/index.md#proof-in-the-numbers-not-in-the-pitch): Slim Revolution mobile and speed rebuild; recovery of a hacked e-commerce store.
+- [About the founder](https://brilliantr.com/index.md#the-person-behind-it): security and penetration-testing background.
+- [Contact](https://brilliantr.com/index.md#contact): email, free 15-minute call, service area.
 
-### Customer Communication Agents
-AI agents that handle inbound enquiries, qualify leads, respond to reviews, and manage appointment booking — 24/7, in any language.
+## Optional
 
-### Document and Invoice Automation
-Automated extraction, routing, and processing of invoices, contracts, receipts, and forms. Typical outcome: 80–90% reduction in manual processing time.
-
-### Security-First AI Builds
-All solutions are built with security by design — no exposed credentials, no leaky integrations.
-
-## Pricing
-
-| Option | Rate | Notes |
-|---|---|---|
-| Introductory hourly | $120/hr | First 10 hours with any new client. No minimum commitment. |
-| Monthly retainer (10 hrs) | $1,200/month | 10 hrs/month at $120/hr. 3-month minimum. Unused hours roll over one month. |
-| Monthly retainer (20 hrs) | $2,200/month | 20 hrs/month at $110/hr. Same terms as the 10-hour retainer. |
-| Standard hourly | $150/hr | No commitment. Billed in full-hour increments. |
-| IT and AI Health Check | $1,500 flat | Fixed-price audit. |
-| AI Automation (ROI sharing) | 50% of annual saving | Paid upfront. Min $5,000 annual saving. |
-
-Payment: ACH bank transfer.
-
-## About the Founder
-
-Security consultant and former professional penetration tester with 10+ years of experience breaking into companies to find vulnerabilities before attackers could. Spent the last 6+ years securing organizations from the inside, currently serving as Director of Security at an 800-person company. Based in Lehi, Utah. Originally from Denmark.
-
-LinkedIn: https://www.linkedin.com/in/runetk-dk/
-
-## How the ROI Sharing Model Works
-
-1. Client and BrilliantR identify a specific, measurable cost (a software subscription, a manual workflow, a paid service).
-2. The annual value is agreed in writing before any work starts.
-3. BrilliantR's fee is exactly 50% of that agreed saving.
-4. Payment is made upfront; work begins.
-5. The finished solution is deployed on the client's own cloud infrastructure. Client owns it entirely.
+- [LinkedIn, founder profile](https://www.linkedin.com/in/runetk-dk/): professional history and credentials.
+- [Slim Revolution](https://slimrevolution.net/): live site produced by the rebuild described in the first case study.
