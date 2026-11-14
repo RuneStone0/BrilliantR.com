@@ -38,21 +38,6 @@ Not every engagement fits ROI sharing. Hourly consulting and monthly retainers a
 
 ## Proof in the numbers, not in the pitch
 
-### Case study: faster and easier to use on a phone, Slim Revolution
-
-Slim Revolution is a wellness studio in Saratoga Springs whose website handled bookings, memberships and a blog. The site had become slow and cluttered: visitors arrived on phones but pages were built for wide desktop screens, opening hours were missing, some links led to unfinished pages, and a contact popup interrupted every visit.
-
-Every fix had to happen on a live site taking bookings all day, so work was done in measured steps: capture the site before touching it, change one group of things, then capture it again.
-
-What was done:
-
-- Speed: removed the social media feed and unused sections, and moved long content such as the FAQ and article list onto their own pages.
-- Mobile: moved from a stretched full-width layout to a fixed-width design that works at every screen size, and reworked the mobile menu, footer and buttons.
-- Conversion: replaced the interrupting popup with a proper contact page, simplified the services list, and fixed the login button and testimonials.
-- Details: opening hours on the page, privacy, accessibility, terms and refund pages properly named and filled in, address corrected, unneeded pages and public staff areas removed.
-
-Result: the site loads faster, is comfortable on a phone, and takes a visitor from the homepage to a booking in fewer steps. It passes the standard search-engine audit with a clean sheet, where it previously had gaps. Live at https://slimrevolution.net/.
-
 ### Case study: recovering a hacked e-commerce website
 
 A small business owner discovered their long-running online store had been hijacked: the site had been replaced by a gambling operation, customers searching for their products were landing on unrelated content, and the malicious pages were appearing in Google results under their domain.

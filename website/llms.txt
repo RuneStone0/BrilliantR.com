@@ -16,15 +16,14 @@ The pages under /pay/, /invoice/ and /offer/ are private client tools (noindex).
 
 ## Contents
 
-- [BrilliantR, full site content in markdown](https://brilliantr.com/index.md): services, target customer, ROI model, two case studies, founder background, complete pricing.
+- [BrilliantR, full site content in markdown](https://brilliantr.com/index.md): services, target customer, ROI model, a case study, founder background, complete pricing.
 - [Services](https://brilliantr.com/index.md#what-we-can-help-with): the six service lines and their scope.
 - [Pricing](https://brilliantr.com/index.md#pricing): every rate, retainer terms, and the ROI-sharing fee formula.
 - [ROI sharing model](https://brilliantr.com/index.md#a-model-built-around-your-results-not-our-hours): the four-step process and a worked example.
-- [Case studies](https://brilliantr.com/index.md#proof-in-the-numbers-not-in-the-pitch): Slim Revolution mobile and speed rebuild; recovery of a hacked e-commerce store.
+- [Case study](https://brilliantr.com/index.md#proof-in-the-numbers-not-in-the-pitch): a hijacked e-commerce store taken from a gambling redirect back to a clean, working shop.
 - [About the founder](https://brilliantr.com/index.md#the-person-behind-it): security and penetration-testing background.
 - [Contact](https://brilliantr.com/index.md#contact): email, free 15-minute call, service area.
 
 ## Optional
 
 - [LinkedIn, founder profile](https://www.linkedin.com/in/runetk-dk/): professional history and credentials.
-- [Slim Revolution](https://slimrevolution.net/): live site produced by the rebuild described in the first case study.
