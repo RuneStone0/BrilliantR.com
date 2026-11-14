@@ -36,3 +36,6 @@ Deployed via GitHub Pages on the `main` branch (`.github/workflows/deploy-pages.
 ## Development
 
 Open `website/index.html` directly in a browser — no server needed.
+
+> **AI agents: read [`AGENT.md`](AGENT.md) first.** Any change to public website content must ship with an
+> updated `website/index.md` and `website/llms.txt`; a pre-commit hook enforces it.
